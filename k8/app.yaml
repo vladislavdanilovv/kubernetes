@@ -11,7 +11,7 @@ spec:
   sources:
     - repoURL: https://github.com/vladislavdanilovv/kubernetes.git # ссылка на Git-репозиторий
       targetRevision: HEAD  # указание на ветку, с котрой стоит синхронизировать состояние репозитория
-      path: gis/k8/manifests  # абсолютный путь до директории с манифестами
+      path: k8/manifests  # абсолютный путь до директории с манифестами
 
   syncPolicy:
     automated:
