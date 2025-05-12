@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: gis
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: gis
@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: gis
-          image: vladikusman/gis:0.0.3
+          image: vladikusman/gis:0.0.2
           ports:
             - containerPort: 8080
