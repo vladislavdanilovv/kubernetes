@@ -9,6 +9,7 @@ import (
 	"gis/design_pattern/decorator"
 	"gis/design_pattern/singleton"
 	"gis/function"
+	"gis/infrastructure"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -119,7 +120,7 @@ func main() {
 	//connectionString := "slava:Qwerty123!@tcp(localhost:3306)/slava?charset=utf8mb4&parseTime=True&loc=UTC"
 	//Database, _ = gorm.Open(mysql.Open(connectionString))
 
-	zapLogger, err := RegisterLogger()
+	zapLogger, err := infrastructure.RegisterLogger()
 	if err != nil {
 		zapLogger.Warn("Ошибка при инициализации логгера")
 		os.Exit(1)
@@ -128,12 +129,13 @@ func main() {
 	defer zapLogger.Sync()
 
 	gin.SetMode("release")
-	server := Handlers(log.Default())
+
+	server := Handlers(zapLogger)
 	wg.Add(1)
 	go func() {
 		err := func() error {
 			defer wg.Done()
-			log.Println("SERVER")
+			zapLogger.Info("SERVER")
 			return server.ListenAndServe()
 		}()
 
@@ -145,9 +147,9 @@ func main() {
 	wg.Wait()
 }
 
-func Handlers(logger *log.Logger) *http.Server {
+func Handlers(logger *zap.Logger) *http.Server {
 
-	logger.Println("HANDLERS OK")
+	logger.Info("HANDLERS OK")
 
 	engine := gin.New()
 
@@ -178,46 +180,6 @@ func HandleError(h appHandler) gin.HandlerFunc {
 
 }
 
-var Logger *zap.Logger
-
-func RegisterLogger() (*zap.Logger, error) {
-	level := zap.NewAtomicLevel()
-	err := level.UnmarshalText([]byte("info"))
-	if err != nil {
-		return nil, err
-	}
-	var samplingConfig = &zap.SamplingConfig{
-		Initial:    10,
-		Thereafter: 10,
-	}
-	var encoderConfig = zapcore.EncoderConfig{
-		TimeKey:        "@timestamp",
-		LevelKey:       "level",
-		NameKey:        "logger",
-		CallerKey:      "caller",
-		MessageKey:     "message",
-		StacktraceKey:  "stacktrace",
-		LineEnding:     zapcore.DefaultLineEnding,
-		EncodeLevel:    zapcore.LowercaseLevelEncoder,
-		EncodeTime:     zapcore.ISO8601TimeEncoder,
-		EncodeDuration: zapcore.SecondsDurationEncoder,
-		EncodeCaller:   zapcore.ShortCallerEncoder,
-	}
-
-	zapConfig := &zap.Config{
-		Level:             level,
-		Sampling:          samplingConfig,
-		Encoding:          "json",
-		EncoderConfig:     encoderConfig,
-		OutputPaths:       []string{"stdout"},
-		ErrorOutputPaths:  []string{"stdout"},
-		DisableStacktrace: true,
-	}
-
-	Logger, err = zapConfig.Build()
-
-	return Logger, err
-}
 func LoggerTest(c *gin.Context) (any, error) {
 	count := 1000
 	var mutex sync.RWMutex
@@ -232,14 +194,14 @@ func LoggerTest(c *gin.Context) (any, error) {
 
 	wg.Wait()
 
-	Logger.Info("test", zap.Field{Key: "ROUTINE IS END", Type: zapcore.StringType, String: "true"})
+	infrastructure.Logger.Info("test", zap.Field{Key: "ROUTINE IS END", Type: zapcore.StringType, String: "true"})
 	return nil, nil
 }
 
 func info(number int, wg *sync.WaitGroup, mutex *sync.RWMutex) {
 
 	//mutex.RLock()
-	Logger.Info("test", zap.Field{Key: "test", Type: zapcore.StringType, String: strconv.Itoa(number)})
+	infrastructure.Logger.Info("test", zap.Field{Key: "test", Type: zapcore.StringType, String: strconv.Itoa(number)})
 
 	//mutex.RUnlock()
 	//fmt.Println("I = ", number)

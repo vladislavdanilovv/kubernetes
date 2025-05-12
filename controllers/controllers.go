@@ -1,9 +1,11 @@
 package controllers
 
 import (
+	"gis/infrastructure"
 	"gis/internal/domain"
 	"github.com/gin-gonic/gin"
-	"log"
+	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 	"net/http"
 )
 
@@ -24,12 +26,15 @@ func filter(do dcFunc) gin.HandlerFunc {
 
 			c.JSON(http.StatusInternalServerError, arg)
 
+			infrastructure.Logger.Error(c.FullPath(), zap.Error(err))
 			return
 		}
 
 		arg.Result = result
 
+		infrastructure.Logger.Info("success", zap.Field{Key: "api", Type: zapcore.StringType, String: c.FullPath()})
 		c.AbortWithStatusJSON(http.StatusOK, arg)
+
 		return
 	}
 
@@ -37,7 +42,7 @@ func filter(do dcFunc) gin.HandlerFunc {
 
 const url = "test"
 
-func HandlerTest(controller *gin.Engine, logger *log.Logger) {
+func HandlerTest(controller *gin.Engine, logger *zap.Logger) {
 	//controller.GET(main.url+"/v1", filter(main.TestFunc))
 	//controller.GET(main.url+"/v2", filter(main.TestHandler2))
 	//controller.GET(main.url+"/v3", filter(main.LoggerTest))
@@ -49,7 +54,7 @@ func HandlerTest(controller *gin.Engine, logger *log.Logger) {
 	controller.GET(url+"/v9", filter(a))
 	controller.GET(url+"/v10", filter(test))
 
-	logger.Println("HANDLERS READY")
+	logger.Info("HANDLERS READY")
 }
 
 func a(c *gin.Context) (any, error) {
