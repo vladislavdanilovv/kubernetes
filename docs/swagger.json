@@ -1,0 +1,5395 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/v1/app-versions": {
+            "get": {
+                "description": "Метод возвращает две версии приложения: soft_update_version и hard_update_version\nПлатформы: IOS = 2, Android = 1",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "AppVersion"
+                ],
+                "summary": "Получение версий приложения",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "enum платформы",
+                        "name": "platform",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app_version.GetAppVersionResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/check-code": {
+            "post": {
+                "description": "Check code",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Check code",
+                "parameters": [
+                    {
+                        "description": "Check code",
+                        "name": "CheckCode",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/confirm.CheckCodeDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/confirm.CheckCodeResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/refresh-token": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Refresh token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Refresh token",
+                "parameters": [
+                    {
+                        "description": "Refresh token",
+                        "name": "RefreshToken",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/confirm.RefreshTokenDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/confirm.TokensDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/send-code": {
+            "post": {
+                "description": "Send code",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Send code",
+                "parameters": [
+                    {
+                        "description": "Send code",
+                        "name": "SendCode",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/confirm.SendCodeDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/confirm.SendCodeResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/blacklist/lock-user": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Lock user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Blacklist"
+                ],
+                "summary": "Lock user",
+                "parameters": [
+                    {
+                        "description": "Lock user",
+                        "name": "LockUser",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/blacklist.LockUserDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/blacklist.LockUserRequestDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/blacklist/unlock-user": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Lock user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Blacklist"
+                ],
+                "summary": "Lock user",
+                "parameters": [
+                    {
+                        "description": "Lock user",
+                        "name": "LockUser",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/blacklist.LockUserDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/blacklist.LockUserRequestDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/car-brands/find": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Find car brands",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Car"
+                ],
+                "summary": "Find car brands",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Name",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/car_brand.FindCarBrandResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/car-colors/find": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Find car colors",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Car"
+                ],
+                "summary": "Find car colors",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Name",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/car_color.FindCarColorResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/car-models/find": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Find car models",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Car"
+                ],
+                "summary": "Find car models",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Brand id",
+                        "name": "car_brand_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Name",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/car_model.FindCarModelResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/cars": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Find user car",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Car"
+                ],
+                "summary": "Find user car",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/car.CarDtoV2"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Put car by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Car"
+                ],
+                "summary": "Put car by ID",
+                "parameters": [
+                    {
+                        "description": "Change car",
+                        "name": "put",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/car.UpdateCarDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/car.UpdateCarDto"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Create user car",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Car"
+                ],
+                "summary": "Create user car",
+                "parameters": [
+                    {
+                        "description": "Create car",
+                        "name": "create",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/car.CreateCarDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/car.CreateCarResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/cars/delete/{id}": {
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Delete cars by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Car"
+                ],
+                "summary": "Delete cars by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/chats": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Create chat",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Create chat",
+                "parameters": [
+                    {
+                        "description": "Create chat",
+                        "name": "CreateChat",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/chat.CreateChatDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/chat.CreateChatResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/chats/active": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод возвращает список активных чатов",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Метод возвращает список активных чатов",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/get_active_chats.ActiveChatDto"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/chats/archived": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Get archived chats",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Get archived chats",
+                "parameters": [
+                    {
+                        "minimum": 0,
+                        "type": "integer",
+                        "name": "page_index",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "name": "page_size",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/chat.GetChatsResponseDto"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/chats/check-new": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Check new messages",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Check new messages",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/chat.CheckNewMessagesResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/chats/{id}/get-trip-id": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод для получения to_user_id и trip_id для работы запроса /api/v1/get-user-offer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Добавить метод получения данных для deep-link",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/chat.GetChatTripResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/chats/{id}/messages": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Get messages",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Get messages",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/chat.GetMessagesResponseDto"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Create message",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Create message",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Create message",
+                        "name": "CreateMessage",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/chat.CreateMessageDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/cities/find": {
+            "get": {
+                "description": "Find cities",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "City"
+                ],
+                "summary": "Find cities",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Name",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/city.FindCityResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/customize": {
+            "get": {
+                "description": "Get customization",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Customization"
+                ],
+                "summary": "Get customization",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "timezone",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/customization.GetCustomizationResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/feature-toggles": {
+            "get": {
+                "description": "Метод переключает фичи (включает или выключает)",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "FeatureToggle"
+                ],
+                "summary": "Получение feature toggle",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/feature_toggle.GetFeatureToggleResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/feedback": {
+            "post": {
+                "description": "create feedback",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Feedback"
+                ],
+                "summary": "create feedback",
+                "parameters": [
+                    {
+                        "description": "create feedback",
+                        "name": "create",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/users_feedbacks.CreateFeedbackDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/users_feedbacks.CreateFeedbackResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/file": {
+            "get": {
+                "description": "Get file",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "File"
+                ],
+                "summary": "Get file",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "file_id",
+                        "name": "File_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Add file",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "multipart/form-data",
+                    "application/json"
+                ],
+                "tags": [
+                    "File"
+                ],
+                "summary": "Add file",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "Add file",
+                        "name": "file",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/file.AddFileResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/geo/point-data": {
+            "get": {
+                "description": "Получить данные по координату",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Geo"
+                ],
+                "summary": "geo",
+                "parameters": [
+                    {
+                        "type": "number",
+                        "name": "lat",
+                        "in": "query"
+                    },
+                    {
+                        "type": "number",
+                        "name": "lon",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/get_data.GetPointDataResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/get-by-trip-id": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Get chat",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Get chat",
+                "parameters": [
+                    {
+                        "description": "Get chat",
+                        "name": "GetChat",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/chat.GetChatDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/chat.GetChatResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/notifications": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод получения списка уведомлений",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Список уведомлений",
+                "parameters": [
+                    {
+                        "minimum": 0,
+                        "type": "integer",
+                        "name": "page_index",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "name": "page_size",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/notification_message.GetNotificationMessagesResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/notifications/check-new": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод проверки новых уведомлений и сообщений",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Проверка новых уведомлений и сообщений",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/notification_message.CheckNewNotificationsResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/notifications/register-token": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод регистрирует push токен полученный с FCM в БД",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Регистрация push токена",
+                "parameters": [
+                    {
+                        "description": "Register token",
+                        "name": "RegisterToken",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/notification_message.RegisterToken"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/notifications/revoke-token": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод удаления push токена при выходе из аккаунта.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Удаление push токена",
+                "parameters": [
+                    {
+                        "description": "Revoke token",
+                        "name": "RevokeToken",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/notification_message.RevokeToken"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/offers/get-user-offer": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Get offer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Offer"
+                ],
+                "summary": "Get offer",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "chat_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "to_user_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "trip_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/trip.OrderDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/offers/passenger/send-offer": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Create offer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Offer"
+                ],
+                "summary": "Create offer",
+                "parameters": [
+                    {
+                        "description": "Create offer",
+                        "name": "create",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/offer.SendOfferDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/offers/{id}": {
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Change offer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Offer"
+                ],
+                "summary": "Change offer",
+                "parameters": [
+                    {
+                        "description": "Change offer",
+                        "name": "change",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/trip.ChangeOfferDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "data",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders/active-driver-orders": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод возвращает список всех активных поездок водителя на определенную дату",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Активные поездки",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "date",
+                        "name": "date",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "from_city_id",
+                        "name": "from_city_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "to_city_id",
+                        "name": "to_city_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v2.GetActiveDriverOrdersResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders/client-upcoming-driver-orders": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод возвращает список всех предстоящих поездок",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Профиль пользователя",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v2.GetUpcomingDriverOrdersResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders/create-announce": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод создает объявления",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Создание объявления",
+                "parameters": [
+                    {
+                        "description": "Параметры для создания объявления",
+                        "name": "create",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v2.CreateAnnounceDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v2.CreateAnnounceResponseDto"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/v2.CreateAnnounceResponseDto"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/v2.CreateAnnounceResponseDto"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/v2.CreateAnnounceResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders/find": {
+            "get": {
+                "description": "Метод возвращает список всех поездок подходящих по выбранным параметрам",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Поиск поездок",
+                "parameters": [
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "name": "from_city_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "minimum": 0,
+                        "type": "integer",
+                        "name": "page_index",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "name": "page_size",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "seat_count",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "sorting",
+                        "in": "query"
+                    },
+                    {
+                        "minLength": 1,
+                        "type": "string",
+                        "name": "start_at",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "time_filter",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "name": "to_city_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "name": "user_type",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/handlers.PageableModel"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/v2.OrderDto"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders/history": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод возвращает список поездок, в котором пользователь был участником.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Получение поездок",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Page size",
+                        "name": "page_size",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Page index",
+                        "name": "page_index",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Статус поездки",
+                        "name": "status",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/handlers.PageableModel"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/v2.OrderDto"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders/recent": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод возвращает последние созданные поездки (user_type = 0) или заявки (user_type = 1)",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Получения последних поездок",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "user_type",
+                        "name": "user_type",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "count",
+                        "name": "count",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v2.GetRecentResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders/upcoming-driver-orders": {
+            "get": {
+                "description": "Метод возвращает список всех предстоящих поездок другого пользователя",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Профиль пользователя",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "user_id",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v2.GetUpcomingDriverOrdersResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders/{id}": {
+            "get": {
+                "description": "Метод возвращающий подробную информацию о поездке.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Подробный вывод поездки",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v2.DetailedOrderDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders/{id}/cancel": {
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод отменяет поездку",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Отмена поездки",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/cancel_order.CancelOrderResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders/{id}/get-offers": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод возвращает список всех заявок. Работает только для водителя поездки",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Получения всех заявок",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v2.GetOffersDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders/{id}/update": {
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Пользователи могут поменять количество мест и дату, а водители могут менять еще цену поездки",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Редактирование модели order",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Параметры для создания объявления",
+                        "name": "create",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v2.UpdateOrderDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v2.UpdateOrderResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/rating-tags": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Create tags for user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Rating"
+                ],
+                "summary": "Create tags for user",
+                "parameters": [
+                    {
+                        "description": "Create tags",
+                        "name": "create",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/rating_tag.AddTagsDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/ratings": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Create rating for user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Rating"
+                ],
+                "summary": "Create rating for user",
+                "parameters": [
+                    {
+                        "description": "Create rating",
+                        "name": "create",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/rating.CreateRatingDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/rating.CreateRatingResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/ratings/check-status": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Check status",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Rating"
+                ],
+                "summary": "Check status",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "to_user_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "trip_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/rating.CheckStatusResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/statement": {
+            "post": {
+                "description": "create statements",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Statements"
+                ],
+                "summary": "create statements",
+                "parameters": [
+                    {
+                        "description": "Create statements",
+                        "name": "put",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/statement.CreateStatementDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "data",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tags": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Get tags by rate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Rating"
+                ],
+                "summary": "Get tags by rate",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Rate",
+                        "name": "rate",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "UserType",
+                        "name": "user_type",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/tag.Dto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tariffs/get-price": {
+            "get": {
+                "description": "Find tariffs from city to city",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Tariffs"
+                ],
+                "summary": "Find tariffs from city to city",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "From city id",
+                        "name": "from_city_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "To city id",
+                        "name": "to_city_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/tariff.GetPriceResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trips": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Create trip",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Trip"
+                ],
+                "summary": "Create trip",
+                "parameters": [
+                    {
+                        "description": "Create trip",
+                        "name": "create",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/trip.CreateTripDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/trip.CreateTripResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trips/get-user-trip/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Get trips by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Trip"
+                ],
+                "summary": "Get trips by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/trip.GetUserTripByIdDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trips/get-user-trips": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Get trips for the user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Trip"
+                ],
+                "summary": "Get trips for the user",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Page size",
+                        "name": "page_size",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Page index",
+                        "name": "page_index",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "User type",
+                        "name": "user_type",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/handlers.PageableModel"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/trip.TripDto"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trips/{id}": {
+            "get": {
+                "description": "Find trips by a filter.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Trip"
+                ],
+                "summary": "Find trip by filters",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/trip.GetTripResponseDto"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Put trips by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Trip"
+                ],
+                "summary": "Put trips by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Change trip",
+                        "name": "put",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/trip.UpdateTripDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/trip.UpdateTripResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/trips/{id}/cancel": {
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Cancel trip by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Trip"
+                ],
+                "summary": "Cancel trip by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/trips/{id}/offer/cancel": {
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Cancel offer by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Trip"
+                ],
+                "summary": "Cancel offer by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "trip id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/user-app-versions/": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод актуализирует версию приложения пользователя",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "UserAppVersion"
+                ],
+                "summary": "Версия приложения пользователя",
+                "parameters": [
+                    {
+                        "description": "Входная модель",
+                        "name": "Модель",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user_app_version.UpsertUserAppVersionDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/user-data": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Get user data",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get user data",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/user_data.GetUserDataDto"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Update user data",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update user data",
+                "parameters": [
+                    {
+                        "description": "update user data",
+                        "name": "create",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user_data.UpdateUserDataDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Create user data",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create user data",
+                "parameters": [
+                    {
+                        "description": "create user data",
+                        "name": "create",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user_data.CreateUserDataDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/user-data/photo": {
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Update user photo",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update user photo",
+                "parameters": [
+                    {
+                        "description": "update user photo",
+                        "name": "create",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user_data.UpdateUserPhotoDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/user-ratings/get-reviews": {
+            "get": {
+                "description": "Get user reviews info",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "UserRating"
+                ],
+                "summary": "Get user reviews info",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "user_id",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 0,
+                        "type": "integer",
+                        "name": "page_index",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "name": "page_size",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/get_reviews.GetReviewsResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user-ratings/get-user-reviews": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Get user reviews info",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "UserRating"
+                ],
+                "summary": "Get user reviews info",
+                "parameters": [
+                    {
+                        "minimum": 0,
+                        "type": "integer",
+                        "name": "page_index",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "name": "page_size",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/get_reviews.GetReviewsResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/delete": {
+            "put": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Delete user account",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Delete user account",
+                "parameters": [
+                    {
+                        "description": "Delete user account",
+                        "name": "create",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user.DeleteUserDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v2/cities/find": {
+            "get": {
+                "description": "Find cities",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "City"
+                ],
+                "summary": "Find cities",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Name",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/city.FindCityResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/offers/passenger/send-offer": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод выполняет отправку запроса от пассажира водителю",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Offer"
+                ],
+                "summary": "Метод отправки запроса на поездку",
+                "parameters": [
+                    {
+                        "description": "Входная модель",
+                        "name": "create",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/send_offer.SendOfferDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v2/orders/active-driver-orders": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод возвращает список всех активных поездок водителя на определенную дату",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Активные поездки",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "date",
+                        "name": "date",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "from_city_id",
+                        "name": "from_city_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "to_city_id",
+                        "name": "to_city_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/get_active_driver_orders.GetActiveDriverOrdersResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/orders/client-upcoming-driver-orders": {
+            "get": {
+                "description": "Метод возвращает список всех предстоящих поездок самого пользователя",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Метод предстоящих поездок",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/get_upcoming_driver_orders.GetUpcomingDriverOrdersResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/orders/create": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод cоздание поездки v2",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order V2"
+                ],
+                "summary": "Создание поездки v2",
+                "parameters": [
+                    {
+                        "description": "Параметры для создания поездки с геопозицией",
+                        "name": "q",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/create_order.CreateOrderDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/create_order.ResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/orders/create-announce": {
+            "post": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод создает объявления",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Создание объявления",
+                "parameters": [
+                    {
+                        "description": "Параметры для создания объявления",
+                        "name": "create",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/create_announce.CreateAnnounceDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/create_announce.CreateAnnounceResponseDto"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/create_announce.CreateAnnounceResponseDto"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/create_announce.CreateAnnounceResponseDto"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/create_announce.CreateAnnounceResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/orders/find": {
+            "get": {
+                "description": "Метод поиска поездок v2",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order V2"
+                ],
+                "summary": "Поиск поездок v2",
+                "parameters": [
+                    {
+                        "type": "number",
+                        "name": "departure_point_lat",
+                        "in": "query"
+                    },
+                    {
+                        "type": "number",
+                        "name": "departure_point_lon",
+                        "in": "query"
+                    },
+                    {
+                        "type": "number",
+                        "name": "destination_point_lat",
+                        "in": "query"
+                    },
+                    {
+                        "type": "number",
+                        "name": "destination_point_lon",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "name": "from_city_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "minimum": 0,
+                        "type": "integer",
+                        "name": "page_index",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "name": "page_size",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "seat_count",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "sorting",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "start_at",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "time",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "name": "to_city_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "name": "user_type",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/handlers.PageableModel"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/common_dto.ItemOrderDto"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/orders/get-recent": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Для того, чтобы скопировать данные с поездки",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Для того, чтобы скопировать данные с поездки",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "count",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 0,
+                        "type": "integer",
+                        "name": "user_type",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/get_recent.GetRecentResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/orders/history": {
+            "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Метод возвращает список поездок, в котором пользователь был участником.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Получение истории поездок",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Размер страницы",
+                        "name": "page_size",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Индекс страницы",
+                        "name": "page_index",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Статус поездки",
+                        "name": "status",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/handlers.PageableModel"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/common_dto.ItemOrderDto"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/orders/upcoming-driver-orders": {
+            "get": {
+                "description": "Метод возвращает список всех предстоящих поездок другого пользователя",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Метод предстоящих поездок",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "user_id",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/get_upcoming_driver_orders.GetUpcomingDriverOrdersResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/orders/{id}": {
+            "get": {
+                "description": "Метод получения подробной информации о поездке, расчитывает дальность если есть координаты пассажира",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Order V2"
+                ],
+                "summary": "Метод получения подробной информации о поездке",
+                "parameters": [
+                    {
+                        "type": "number",
+                        "description": "Широта точки посадки пасссажира",
+                        "name": "departure_point_lat",
+                        "in": "query"
+                    },
+                    {
+                        "type": "number",
+                        "description": "Долгота точки посадки пасссажира",
+                        "name": "departure_point_lon",
+                        "in": "query"
+                    },
+                    {
+                        "type": "number",
+                        "description": "Широта точки высадки пасссажира",
+                        "name": "destination_point_lat",
+                        "in": "query"
+                    },
+                    {
+                        "type": "number",
+                        "description": "Долгота точки высадки пасссажира",
+                        "name": "destination_point_lon",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "ID поездки",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/get_order.GetOrderResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/tariffs/get-price": {
+            "get": {
+                "description": "Для расчета цены используется тариф по региону города (from_city_id) откуда выезжают",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/json"
+                ],
+                "tags": [
+                    "Tariffs"
+                ],
+                "summary": "Метод расчета цены за поездку",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Id города откуда выезжают",
+                        "name": "from_city_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "number",
+                        "description": "Широта точки посадки",
+                        "name": "departure_point_lat",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "number",
+                        "description": "Долгота точки посадки",
+                        "name": "departure_point_lon",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "number",
+                        "description": "Широта точки высадки",
+                        "name": "destination_point_lat",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "number",
+                        "description": "Долгота точки высадки",
+                        "name": "destination_point_lon",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/get_price.GetPriceResponseDto"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "app_version.GetAppVersionResponseDto": {
+            "type": "object",
+            "properties": {
+                "app_link_android": {
+                    "type": "string"
+                },
+                "app_link_ios": {
+                    "type": "string"
+                },
+                "hard_update": {
+                    "$ref": "#/definitions/app_version.HardUpdateDto"
+                },
+                "soft_update": {
+                    "$ref": "#/definitions/app_version.SoftUpdateDto"
+                }
+            }
+        },
+        "app_version.HardUpdateDto": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        },
+        "app_version.SoftUpdateDto": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        },
+        "blacklist.LockUserDto": {
+            "type": "object",
+            "properties": {
+                "to_user_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "blacklist.LockUserRequestDto": {
+            "type": "object",
+            "properties": {
+                "is_locked": {
+                    "type": "boolean"
+                },
+                "to_user_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "cancel_order.CancelOrderResponseDto": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "car.CarDto": {
+            "type": "object",
+            "properties": {
+                "brand": {
+                    "type": "string"
+                },
+                "car_number": {
+                    "type": "string"
+                },
+                "color": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "issue_date": {
+                    "type": "integer"
+                },
+                "model": {
+                    "type": "string"
+                }
+            }
+        },
+        "car.CarDtoV2": {
+            "type": "object",
+            "properties": {
+                "brand": {
+                    "type": "string"
+                },
+                "brand_id": {
+                    "type": "integer"
+                },
+                "car_number": {
+                    "type": "string"
+                },
+                "color": {
+                    "type": "string"
+                },
+                "color_id": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "issue_date": {
+                    "type": "integer"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "model_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "car.CreateCarDto": {
+            "type": "object",
+            "properties": {
+                "brand_id": {
+                    "type": "integer"
+                },
+                "car_number": {
+                    "type": "string"
+                },
+                "color_id": {
+                    "type": "integer"
+                },
+                "date": {
+                    "type": "integer",
+                    "minimum": 1950
+                },
+                "model_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "car.CreateCarResponseDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "car.UpdateCarDto": {
+            "type": "object",
+            "properties": {
+                "brand_id": {
+                    "type": "integer"
+                },
+                "car_id": {
+                    "type": "integer"
+                },
+                "car_number": {
+                    "type": "string"
+                },
+                "color_id": {
+                    "type": "integer"
+                },
+                "date": {
+                    "type": "integer",
+                    "maximum": 2023,
+                    "minimum": 1950
+                },
+                "model_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "car_brand.Dto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "car_brand.FindCarBrandResponseDto": {
+            "type": "object",
+            "properties": {
+                "car_brands": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/car_brand.Dto"
+                    }
+                }
+            }
+        },
+        "car_color.Dto": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "car_color.FindCarColorResponseDto": {
+            "type": "object",
+            "properties": {
+                "car_color": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/car_color.Dto"
+                    }
+                }
+            }
+        },
+        "car_model.Dto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "car_model.FindCarModelResponseDto": {
+            "type": "object",
+            "properties": {
+                "car_models": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/car_model.Dto"
+                    }
+                }
+            }
+        },
+        "chat.CheckNewMessagesResponseDto": {
+            "type": "object",
+            "properties": {
+                "has_new": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "chat.CreateChatDto": {
+            "type": "object",
+            "properties": {
+                "to_user_id": {
+                    "type": "integer"
+                },
+                "trip_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "chat.CreateChatResponseDto": {
+            "type": "object",
+            "properties": {
+                "chat_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "chat.CreateMessageDto": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "chat.GetChatDto": {
+            "type": "object",
+            "properties": {
+                "trip_id": {
+                    "type": "integer"
+                },
+                "user_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "chat.GetChatResponseDto": {
+            "type": "object",
+            "properties": {
+                "chat_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "chat.GetChatTripResponseDto": {
+            "type": "object",
+            "properties": {
+                "to_user_id": {
+                    "type": "integer"
+                },
+                "trip_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "chat.GetChatsResponseDto": {
+            "type": "object",
+            "properties": {
+                "chat_id": {
+                    "type": "integer"
+                },
+                "chat_status": {
+                    "type": "integer"
+                },
+                "from_city_name": {
+                    "type": "string"
+                },
+                "has_unread_messages": {
+                    "type": "boolean"
+                },
+                "message": {
+                    "$ref": "#/definitions/chat.MessageDto"
+                },
+                "offer_status": {
+                    "type": "integer"
+                },
+                "start_at": {
+                    "type": "string"
+                },
+                "time": {
+                    "type": "string"
+                },
+                "to_city_name": {
+                    "type": "string"
+                },
+                "trip_id": {
+                    "type": "integer"
+                },
+                "user_data": {
+                    "$ref": "#/definitions/user_data.GetUserDataChatDto"
+                }
+            }
+        },
+        "chat.GetMessagesResponseDto": {
+            "type": "object",
+            "properties": {
+                "chat_status": {
+                    "type": "integer"
+                },
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/chat.MessageDto"
+                    }
+                },
+                "review": {
+                    "type": "boolean"
+                },
+                "to_user_id": {
+                    "type": "integer"
+                },
+                "trip_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "chat.MessageDto": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "is_owner": {
+                    "type": "boolean"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "city.CityDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                }
+            }
+        },
+        "city.FindCityResponseDto": {
+            "type": "object",
+            "properties": {
+                "cities": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/city.CityDto"
+                    }
+                }
+            }
+        },
+        "city_v2.CityDtoV2": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "common_dto.AuthorDataDto": {
+            "type": "object",
+            "properties": {
+                "car": {
+                    "$ref": "#/definitions/common_dto.CarDto"
+                },
+                "user_data": {
+                    "$ref": "#/definitions/common_dto.UserDataDto"
+                }
+            }
+        },
+        "common_dto.CarDto": {
+            "type": "object",
+            "properties": {
+                "brand": {
+                    "type": "string"
+                },
+                "brand_id": {
+                    "type": "integer"
+                },
+                "car_number": {
+                    "type": "string"
+                },
+                "color": {
+                    "type": "string"
+                },
+                "color_id": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "issue_date": {
+                    "type": "integer"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "model_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "common_dto.CashData": {
+            "type": "object",
+            "properties": {
+                "currency": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                }
+            }
+        },
+        "common_dto.CityDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                }
+            }
+        },
+        "common_dto.DistanceData": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "common_dto.ItemOrderDto": {
+            "type": "object",
+            "properties": {
+                "offer_data": {
+                    "$ref": "#/definitions/common_dto.OfferData"
+                },
+                "order_data": {
+                    "$ref": "#/definitions/common_dto.OrderData"
+                },
+                "trip_data": {
+                    "$ref": "#/definitions/common_dto.TripData"
+                }
+            }
+        },
+        "common_dto.OfferData": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "description": "Количество заявок на твою поездку",
+                    "type": "integer"
+                },
+                "status": {
+                    "description": "Статус заявки, которую ты отправил",
+                    "type": "integer"
+                },
+                "suitable": {
+                    "description": "Подходящие поездки",
+                    "type": "integer"
+                }
+            }
+        },
+        "common_dto.OrderData": {
+            "type": "object",
+            "properties": {
+                "author": {
+                    "$ref": "#/definitions/common_dto.AuthorDataDto"
+                },
+                "departure_data": {
+                    "$ref": "#/definitions/common_dto.PlaceData"
+                },
+                "destination_data": {
+                    "$ref": "#/definitions/common_dto.PlaceData"
+                },
+                "full_seat_count": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "start_at": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "user_type": {
+                    "type": "integer"
+                }
+            }
+        },
+        "common_dto.PassengerData": {
+            "type": "object",
+            "properties": {
+                "order_id": {
+                    "type": "integer"
+                },
+                "seat_count": {
+                    "type": "integer"
+                },
+                "user_data": {
+                    "$ref": "#/definitions/common_dto.UserDataDto"
+                }
+            }
+        },
+        "common_dto.PlaceData": {
+            "type": "object",
+            "properties": {
+                "city": {
+                    "$ref": "#/definitions/common_dto.CityDto"
+                },
+                "distanceData": {
+                    "$ref": "#/definitions/common_dto.DistanceData"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "point": {
+                    "$ref": "#/definitions/common_dto.Point"
+                }
+            }
+        },
+        "common_dto.Point": {
+            "type": "object",
+            "properties": {
+                "lat": {
+                    "type": "number"
+                },
+                "lon": {
+                    "type": "number"
+                }
+            }
+        },
+        "common_dto.TripData": {
+            "type": "object",
+            "properties": {
+                "cash_data": {
+                    "$ref": "#/definitions/common_dto.CashData"
+                },
+                "free_seat_count": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "on_the_way": {
+                    "description": "Началась ли поездка",
+                    "type": "boolean"
+                }
+            }
+        },
+        "common_dto.UserDataDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "photo_url": {
+                    "type": "string"
+                },
+                "rating_count": {
+                    "type": "integer"
+                },
+                "user_rating": {
+                    "type": "string"
+                }
+            }
+        },
+        "config.FeatureToggle": {
+            "type": "object",
+            "properties": {
+                "force_update": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "confirm.CheckCodeDto": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 1111
+                },
+                "phone_number": {
+                    "type": "string",
+                    "example": "79123456789"
+                },
+                "session_id": {
+                    "type": "string",
+                    "example": "232b73ca-76ee-11ee-b962-0242ac120002"
+                }
+            }
+        },
+        "confirm.CheckCodeResponseDto": {
+            "type": "object",
+            "properties": {
+                "is_registered": {
+                    "type": "boolean"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "token": {
+                    "$ref": "#/definitions/confirm.TokensDto"
+                }
+            }
+        },
+        "confirm.RefreshTokenDto": {
+            "type": "object",
+            "properties": {
+                "refresh_token": {
+                    "type": "string"
+                },
+                "session_id": {
+                    "type": "string",
+                    "example": "232b73ca-76ee-11ee-b962-0242ac120002"
+                }
+            }
+        },
+        "confirm.SendCodeDto": {
+            "type": "object",
+            "properties": {
+                "phone_number": {
+                    "type": "string",
+                    "example": "79123456789"
+                }
+            }
+        },
+        "confirm.SendCodeResponseDto": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "confirm.TokensDto": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "create_announce.CreateAnnounceDto": {
+            "type": "object",
+            "required": [
+                "from_city_id",
+                "seat_count",
+                "start_at",
+                "to_city_id"
+            ],
+            "properties": {
+                "departure_address": {
+                    "type": "string"
+                },
+                "departure_point": {
+                    "$ref": "#/definitions/order.Point"
+                },
+                "destination_address": {
+                    "type": "string"
+                },
+                "destination_point": {
+                    "$ref": "#/definitions/order.Point"
+                },
+                "from_city_id": {
+                    "type": "integer"
+                },
+                "seat_count": {
+                    "type": "integer",
+                    "maximum": 4,
+                    "minimum": 1
+                },
+                "start_at": {
+                    "type": "string"
+                },
+                "to_city_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "create_announce.CreateAnnounceResponseDto": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "create_order.CreateOrderDto": {
+            "type": "object",
+            "properties": {
+                "car_id": {
+                    "type": "integer"
+                },
+                "departure_address": {
+                    "type": "string"
+                },
+                "departure_point": {
+                    "$ref": "#/definitions/order.Point"
+                },
+                "destination_address": {
+                    "type": "string"
+                },
+                "destination_point": {
+                    "$ref": "#/definitions/order.Point"
+                },
+                "from_city_id": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "seat_count": {
+                    "type": "integer"
+                },
+                "start_at": {
+                    "type": "string"
+                },
+                "to_city_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "create_order.ResponseDto": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "customization.GetCustomizationResponseDto": {
+            "type": "object",
+            "properties": {
+                "notes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/customization.NoteDto"
+                    }
+                },
+                "photos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/customization.ImageDto"
+                    }
+                },
+                "popular_routes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/customization.PopularRouteDto"
+                    }
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "customization.ImageDto": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "customization.NoteDto": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "customization.PopularRouteDto": {
+            "type": "object",
+            "properties": {
+                "from_city": {
+                    "type": "string"
+                },
+                "from_city_id": {
+                    "type": "integer"
+                },
+                "image_url": {
+                    "type": "string"
+                },
+                "price_text": {
+                    "type": "string"
+                },
+                "to_city": {
+                    "type": "string"
+                },
+                "to_city_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "feature_toggle.GetFeatureToggleResponseDto": {
+            "type": "object",
+            "properties": {
+                "feature_toggle": {
+                    "$ref": "#/definitions/config.FeatureToggle"
+                }
+            }
+        },
+        "file.AddFileResponseDto": {
+            "type": "object",
+            "properties": {
+                "file_id": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "get_active_chats.ActiveChatDto": {
+            "type": "object",
+            "properties": {
+                "chat_id": {
+                    "type": "integer"
+                },
+                "chat_status": {
+                    "type": "integer"
+                },
+                "from_city_name": {
+                    "type": "string"
+                },
+                "has_unread_messages": {
+                    "type": "boolean"
+                },
+                "message": {
+                    "$ref": "#/definitions/get_active_chats.MessageDto"
+                },
+                "offer_status": {
+                    "type": "integer"
+                },
+                "start_at": {
+                    "type": "string"
+                },
+                "time": {
+                    "type": "string"
+                },
+                "to_city_name": {
+                    "type": "string"
+                },
+                "trip_id": {
+                    "type": "integer"
+                },
+                "user_data": {
+                    "$ref": "#/definitions/get_active_chats.UserDataDto"
+                }
+            }
+        },
+        "get_active_chats.MessageDto": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "is_owner": {
+                    "type": "boolean"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "get_active_chats.UserDataDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "photo_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "get_active_driver_orders.GetActiveDriverOrdersResponseDto": {
+            "type": "object",
+            "properties": {
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/common_dto.ItemOrderDto"
+                    }
+                }
+            }
+        },
+        "get_data.CityDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "get_data.GetPointDataResponseDto": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "city": {
+                    "$ref": "#/definitions/get_data.CityDto"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "region": {
+                    "$ref": "#/definitions/get_data.RegionDto"
+                }
+            }
+        },
+        "get_data.RegionDto": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "get_order.GetOrderResponseDto": {
+            "type": "object",
+            "properties": {
+                "is_owner": {
+                    "type": "boolean"
+                },
+                "offer_data": {
+                    "$ref": "#/definitions/common_dto.OfferData"
+                },
+                "order_data": {
+                    "$ref": "#/definitions/common_dto.OrderData"
+                },
+                "passengers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/common_dto.PassengerData"
+                    }
+                },
+                "trip_data": {
+                    "$ref": "#/definitions/common_dto.TripData"
+                }
+            }
+        },
+        "get_price.GetPriceResponseDto": {
+            "type": "object",
+            "properties": {
+                "lower_limit": {
+                    "type": "number"
+                },
+                "offset": {
+                    "type": "number"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "upper_limit": {
+                    "type": "number"
+                }
+            }
+        },
+        "get_recent.GetRecentResponseDto": {
+            "type": "object",
+            "properties": {
+                "item": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/common_dto.ItemOrderDto"
+                    }
+                }
+            }
+        },
+        "get_reviews.GetReviewsResponseDto": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "review": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/get_reviews.ReviewDto"
+                    }
+                }
+            }
+        },
+        "get_reviews.ReviewDto": {
+            "type": "object",
+            "properties": {
+                "photo_url": {
+                    "type": "string"
+                },
+                "rate": {
+                    "type": "integer"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "get_upcoming_driver_orders.GetUpcomingDriverOrdersResponseDto": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/common_dto.ItemOrderDto"
+                    }
+                }
+            }
+        },
+        "handlers.PageableModel": {
+            "type": "object",
+            "properties": {
+                "items": {},
+                "page_index": {
+                    "type": "integer"
+                },
+                "page_size": {
+                    "type": "integer"
+                },
+                "total_count": {
+                    "type": "integer"
+                }
+            }
+        },
+        "notification_message.CheckNewNotificationsResponseDto": {
+            "type": "object",
+            "properties": {
+                "has_new_messages": {
+                    "type": "boolean"
+                },
+                "has_new_notifications": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "notification_message.GetNotificationMessagesResponseDto": {
+            "type": "object",
+            "properties": {
+                "notification_messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/notification_message.NotificationMessagesDto"
+                    }
+                }
+            }
+        },
+        "notification_message.NotificationMessagesDto": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "deep_link": {
+                    "type": "string"
+                },
+                "image_url": {
+                    "type": "string"
+                },
+                "is_read": {
+                    "type": "boolean"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "notification_message.RegisterToken": {
+            "type": "object",
+            "properties": {
+                "device_id": {
+                    "type": "string"
+                },
+                "platform": {
+                    "type": "integer"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "notification_message.RevokeToken": {
+            "type": "object",
+            "properties": {
+                "device_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "offer.SendOfferDto": {
+            "type": "object",
+            "required": [
+                "seat_count",
+                "trip_id"
+            ],
+            "properties": {
+                "seat_count": {
+                    "type": "integer",
+                    "maximum": 8,
+                    "minimum": 1
+                },
+                "trip_id": {
+                    "type": "integer",
+                    "minimum": 1
+                }
+            }
+        },
+        "order.Point": {
+            "type": "object",
+            "properties": {
+                "lat": {
+                    "type": "number"
+                },
+                "lon": {
+                    "type": "number"
+                }
+            }
+        },
+        "rating.CheckStatusResponseDto": {
+            "type": "object",
+            "properties": {
+                "is_reviewed": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "rating.CreateRatingDto": {
+            "type": "object",
+            "properties": {
+                "rate": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "to_user_id": {
+                    "type": "integer"
+                },
+                "trip_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "rating.CreateRatingResponseDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "rating_tag.AddTagsDto": {
+            "type": "object",
+            "properties": {
+                "rating_id": {
+                    "type": "integer"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "send_offer.SendOfferDto": {
+            "type": "object",
+            "required": [
+                "order_id",
+                "seat_count"
+            ],
+            "properties": {
+                "order_id": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "seat_count": {
+                    "type": "integer",
+                    "maximum": 8,
+                    "minimum": 1
+                }
+            }
+        },
+        "statement.CreateStatementDto": {
+            "type": "object",
+            "required": [
+                "mail",
+                "name"
+            ],
+            "properties": {
+                "mail": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "tag.Dto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "tariff.GetPriceResponseDto": {
+            "type": "object",
+            "properties": {
+                "lower_limit": {
+                    "type": "number"
+                },
+                "offset": {
+                    "type": "number"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "upper_limit": {
+                    "type": "number"
+                }
+            }
+        },
+        "trip.ChangeOfferDto": {
+            "type": "object",
+            "required": [
+                "status"
+            ],
+            "properties": {
+                "status": {
+                    "type": "integer",
+                    "maximum": 3,
+                    "minimum": 1
+                }
+            }
+        },
+        "trip.CreateTripDto": {
+            "type": "object",
+            "properties": {
+                "car_id": {
+                    "type": "integer"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "departure_point": {
+                    "type": "string"
+                },
+                "destination_point": {
+                    "type": "string"
+                },
+                "from_city_id": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "seat_count": {
+                    "type": "integer",
+                    "maximum": 4,
+                    "minimum": 1
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "to_city_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "trip.CreateTripResponseDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "trip.DriverData": {
+            "type": "object",
+            "properties": {
+                "car": {
+                    "$ref": "#/definitions/car.CarDto"
+                },
+                "user_data": {
+                    "$ref": "#/definitions/user_data.UserDataDto"
+                }
+            }
+        },
+        "trip.GetTripResponseDto": {
+            "type": "object",
+            "properties": {
+                "currency": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "driver": {
+                    "$ref": "#/definitions/trip.DriverData"
+                },
+                "free_seat_count": {
+                    "type": "integer"
+                },
+                "from_city": {
+                    "$ref": "#/definitions/city.CityDto"
+                },
+                "full_seat_count": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "passenger": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/user_data.UserDataDto"
+                    }
+                },
+                "price": {
+                    "type": "number"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "to_city": {
+                    "$ref": "#/definitions/city.CityDto"
+                }
+            }
+        },
+        "trip.GetUserTripByIdDto": {
+            "type": "object",
+            "properties": {
+                "currency": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "driver": {
+                    "$ref": "#/definitions/trip.DriverData"
+                },
+                "free_seat_count": {
+                    "type": "integer"
+                },
+                "from_city": {
+                    "$ref": "#/definitions/city.CityDto"
+                },
+                "full_seat_count": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "offer": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/user_data.UserDataDto"
+                    }
+                },
+                "passenger": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/user_data.UserDataDto"
+                    }
+                },
+                "price": {
+                    "type": "number"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "to_city": {
+                    "$ref": "#/definitions/city.CityDto"
+                },
+                "user_type": {
+                    "type": "integer"
+                }
+            }
+        },
+        "trip.OrderDto": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string"
+                },
+                "from_city": {
+                    "$ref": "#/definitions/city.CityDto"
+                },
+                "offer_id": {
+                    "type": "integer"
+                },
+                "offer_status": {
+                    "type": "integer"
+                },
+                "opponent_is_locked": {
+                    "type": "boolean"
+                },
+                "order_id": {
+                    "type": "integer"
+                },
+                "order_status": {
+                    "type": "integer"
+                },
+                "seat_count": {
+                    "type": "integer"
+                },
+                "to_city": {
+                    "$ref": "#/definitions/city.CityDto"
+                },
+                "user_data": {
+                    "$ref": "#/definitions/user_data.UserDataDto"
+                },
+                "user_type": {
+                    "type": "integer"
+                }
+            }
+        },
+        "trip.TripDto": {
+            "type": "object",
+            "properties": {
+                "currency": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "driver": {
+                    "$ref": "#/definitions/trip.DriverData"
+                },
+                "free_seat_count": {
+                    "type": "integer"
+                },
+                "from_city": {
+                    "$ref": "#/definitions/city.CityDto"
+                },
+                "full_seat_count": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "offer_count": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "to_city": {
+                    "$ref": "#/definitions/city.CityDto"
+                }
+            }
+        },
+        "trip.UpdateTripDto": {
+            "type": "object",
+            "properties": {
+                "car_id": {
+                    "type": "integer"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "seat_count": {
+                    "type": "integer",
+                    "maximum": 4,
+                    "minimum": 1
+                }
+            }
+        },
+        "trip.UpdateTripResponseDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.DeleteUserDto": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "example": "Начну жизнь с чистого листа!"
+                }
+            }
+        },
+        "user_app_version.UpsertUserAppVersionDto": {
+            "type": "object",
+            "properties": {
+                "app_version": {
+                    "type": "string"
+                },
+                "device_id": {
+                    "type": "string"
+                },
+                "platform": {
+                    "type": "integer",
+                    "maximum": 2,
+                    "minimum": 1
+                }
+            }
+        },
+        "user_data.CreateUserDataDto": {
+            "type": "object",
+            "properties": {
+                "birth_date": {
+                    "type": "string",
+                    "example": "1991-01-01"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "dealee@dealee.ru"
+                },
+                "first_name": {
+                    "type": "string",
+                    "maxLength": 50,
+                    "example": "Иван"
+                },
+                "last_name": {
+                    "type": "string",
+                    "maxLength": 50,
+                    "example": "Иванов"
+                },
+                "sex": {
+                    "type": "integer",
+                    "example": 2
+                }
+            }
+        },
+        "user_data.GetUserDataChatDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "photo_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "user_data.GetUserDataDto": {
+            "type": "object",
+            "properties": {
+                "birth_date": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "phone_number": {
+                    "type": "string"
+                },
+                "photo_url": {
+                    "type": "string"
+                },
+                "rating_count": {
+                    "type": "integer"
+                },
+                "sex": {
+                    "type": "integer"
+                },
+                "user_rating": {
+                    "type": "number"
+                }
+            }
+        },
+        "user_data.UpdateUserDataDto": {
+            "type": "object",
+            "properties": {
+                "birth_date": {
+                    "type": "string",
+                    "example": "1992-02-02"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string",
+                    "maxLength": 50
+                },
+                "last_name": {
+                    "type": "string",
+                    "maxLength": 50
+                },
+                "sex": {
+                    "type": "integer"
+                }
+            }
+        },
+        "user_data.UpdateUserPhotoDto": {
+            "type": "object",
+            "properties": {
+                "photo_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "user_data.UserDataDto": {
+            "type": "object",
+            "properties": {
+                "chat_id": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "photo_url": {
+                    "type": "string"
+                },
+                "rating_count": {
+                    "type": "integer"
+                },
+                "user_rating": {
+                    "type": "number"
+                }
+            }
+        },
+        "users_feedbacks.CreateFeedbackDto": {
+            "type": "object",
+            "required": [
+                "email",
+                "message"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "maxLength": 50
+                },
+                "message": {
+                    "type": "string",
+                    "maxLength": 500
+                }
+            }
+        },
+        "users_feedbacks.CreateFeedbackResponseDto": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "v2.CancelOrderResponseDto": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "v2.CreateAnnounceDto": {
+            "type": "object",
+            "required": [
+                "from_city_id",
+                "seat_count",
+                "start_at",
+                "to_city_id"
+            ],
+            "properties": {
+                "from_city_id": {
+                    "type": "integer"
+                },
+                "seat_count": {
+                    "type": "integer",
+                    "maximum": 4,
+                    "minimum": 1
+                },
+                "start_at": {
+                    "type": "string"
+                },
+                "to_city_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "v2.CreateAnnounceResponseDto": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "v2.DetailedOrderDto": {
+            "type": "object",
+            "properties": {
+                "author": {
+                    "$ref": "#/definitions/v2.DriverDataV2"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "free_seat_count": {
+                    "type": "integer"
+                },
+                "from_city": {
+                    "$ref": "#/definitions/city_v2.CityDtoV2"
+                },
+                "full_seat_count": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_owner": {
+                    "type": "boolean"
+                },
+                "offer": {
+                    "$ref": "#/definitions/v2.OfferDescription"
+                },
+                "on_the_way": {
+                    "type": "boolean"
+                },
+                "passengers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v2.UserDataDtoV2"
+                    }
+                },
+                "price": {
+                    "type": "number"
+                },
+                "start_at": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "to_city": {
+                    "$ref": "#/definitions/city_v2.CityDtoV2"
+                },
+                "trip": {
+                    "$ref": "#/definitions/v2.TripDescription"
+                },
+                "user_type": {
+                    "type": "integer"
+                }
+            }
+        },
+        "v2.DriverDataV2": {
+            "type": "object",
+            "properties": {
+                "car": {
+                    "$ref": "#/definitions/car.CarDtoV2"
+                },
+                "user_data": {
+                    "$ref": "#/definitions/v2.UserDataDtoV2"
+                }
+            }
+        },
+        "v2.GetActiveDriverOrdersResponseDto": {
+            "type": "object",
+            "properties": {
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v2.DetailedOrderDto"
+                    }
+                }
+            }
+        },
+        "v2.GetOffersDto": {
+            "type": "object",
+            "properties": {
+                "offer": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v2.OfferDto"
+                    }
+                }
+            }
+        },
+        "v2.GetRecentResponseDto": {
+            "type": "object",
+            "properties": {
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v2.DetailedOrderDto"
+                    }
+                }
+            }
+        },
+        "v2.GetUpcomingDriverOrdersResponseDto": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v2.DetailedOrderDto"
+                    }
+                }
+            }
+        },
+        "v2.OfferDescription": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "v2.OfferDto": {
+            "type": "object",
+            "properties": {
+                "chat_id": {
+                    "type": "integer"
+                },
+                "from_user": {
+                    "$ref": "#/definitions/v2.UserDataDtoV2"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "v2.OrderDto": {
+            "type": "object",
+            "properties": {
+                "author": {
+                    "$ref": "#/definitions/v2.DriverDataV2"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "free_seat_count": {
+                    "type": "integer"
+                },
+                "from_city": {
+                    "$ref": "#/definitions/city_v2.CityDtoV2"
+                },
+                "full_seat_count": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "offer": {
+                    "$ref": "#/definitions/v2.OfferDescription"
+                },
+                "on_the_way": {
+                    "type": "boolean"
+                },
+                "passengers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v2.UserDataDtoV2"
+                    }
+                },
+                "price": {
+                    "type": "number"
+                },
+                "start_at": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "to_city": {
+                    "$ref": "#/definitions/city_v2.CityDtoV2"
+                },
+                "trip_count": {
+                    "type": "integer"
+                },
+                "user_type": {
+                    "type": "integer"
+                }
+            }
+        },
+        "v2.TripDescription": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "v2.UpdateOrderDto": {
+            "type": "object",
+            "required": [
+                "seat_count",
+                "start_at"
+            ],
+            "properties": {
+                "car_id": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "seat_count": {
+                    "type": "integer",
+                    "maximum": 4,
+                    "minimum": 1
+                },
+                "start_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "v2.UpdateOrderResponseDto": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "v2.UserDataDtoV2": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "photo_url": {
+                    "type": "string"
+                },
+                "rating_count": {
+                    "type": "integer"
+                },
+                "seat_count": {
+                    "type": "integer"
+                },
+                "user_rating": {
+                    "type": "number"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}

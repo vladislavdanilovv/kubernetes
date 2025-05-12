@@ -1,0 +1,3482 @@
+definitions:
+  app_version.GetAppVersionResponseDto:
+    properties:
+      app_link_android:
+        type: string
+      app_link_ios:
+        type: string
+      hard_update:
+        $ref: '#/definitions/app_version.HardUpdateDto'
+      soft_update:
+        $ref: '#/definitions/app_version.SoftUpdateDto'
+    type: object
+  app_version.HardUpdateDto:
+    properties:
+      message:
+        type: string
+      title:
+        type: string
+      version:
+        type: string
+    type: object
+  app_version.SoftUpdateDto:
+    properties:
+      message:
+        type: string
+      title:
+        type: string
+      version:
+        type: string
+    type: object
+  blacklist.LockUserDto:
+    properties:
+      to_user_id:
+        type: integer
+    type: object
+  blacklist.LockUserRequestDto:
+    properties:
+      is_locked:
+        type: boolean
+      to_user_id:
+        type: integer
+    type: object
+  cancel_order.CancelOrderResponseDto:
+    properties:
+      message:
+        type: string
+      title:
+        type: string
+    type: object
+  car.CarDto:
+    properties:
+      brand:
+        type: string
+      car_number:
+        type: string
+      color:
+        type: string
+      id:
+        type: integer
+      issue_date:
+        type: integer
+      model:
+        type: string
+    type: object
+  car.CarDtoV2:
+    properties:
+      brand:
+        type: string
+      brand_id:
+        type: integer
+      car_number:
+        type: string
+      color:
+        type: string
+      color_id:
+        type: integer
+      id:
+        type: integer
+      issue_date:
+        type: integer
+      model:
+        type: string
+      model_id:
+        type: integer
+    type: object
+  car.CreateCarDto:
+    properties:
+      brand_id:
+        type: integer
+      car_number:
+        type: string
+      color_id:
+        type: integer
+      date:
+        minimum: 1950
+        type: integer
+      model_id:
+        type: integer
+    type: object
+  car.CreateCarResponseDto:
+    properties:
+      id:
+        type: integer
+    type: object
+  car.UpdateCarDto:
+    properties:
+      brand_id:
+        type: integer
+      car_id:
+        type: integer
+      car_number:
+        type: string
+      color_id:
+        type: integer
+      date:
+        maximum: 2023
+        minimum: 1950
+        type: integer
+      model_id:
+        type: integer
+    type: object
+  car_brand.Dto:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  car_brand.FindCarBrandResponseDto:
+    properties:
+      car_brands:
+        items:
+          $ref: '#/definitions/car_brand.Dto'
+        type: array
+    type: object
+  car_color.Dto:
+    properties:
+      code:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  car_color.FindCarColorResponseDto:
+    properties:
+      car_color:
+        items:
+          $ref: '#/definitions/car_color.Dto'
+        type: array
+    type: object
+  car_model.Dto:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  car_model.FindCarModelResponseDto:
+    properties:
+      car_models:
+        items:
+          $ref: '#/definitions/car_model.Dto'
+        type: array
+    type: object
+  chat.CheckNewMessagesResponseDto:
+    properties:
+      has_new:
+        type: boolean
+    type: object
+  chat.CreateChatDto:
+    properties:
+      to_user_id:
+        type: integer
+      trip_id:
+        type: integer
+    type: object
+  chat.CreateChatResponseDto:
+    properties:
+      chat_id:
+        type: integer
+    type: object
+  chat.CreateMessageDto:
+    properties:
+      message:
+        type: string
+    type: object
+  chat.GetChatDto:
+    properties:
+      trip_id:
+        type: integer
+      user_id:
+        type: integer
+    type: object
+  chat.GetChatResponseDto:
+    properties:
+      chat_id:
+        type: integer
+    type: object
+  chat.GetChatTripResponseDto:
+    properties:
+      to_user_id:
+        type: integer
+      trip_id:
+        type: integer
+    type: object
+  chat.GetChatsResponseDto:
+    properties:
+      chat_id:
+        type: integer
+      chat_status:
+        type: integer
+      from_city_name:
+        type: string
+      has_unread_messages:
+        type: boolean
+      message:
+        $ref: '#/definitions/chat.MessageDto'
+      offer_status:
+        type: integer
+      start_at:
+        type: string
+      time:
+        type: string
+      to_city_name:
+        type: string
+      trip_id:
+        type: integer
+      user_data:
+        $ref: '#/definitions/user_data.GetUserDataChatDto'
+    type: object
+  chat.GetMessagesResponseDto:
+    properties:
+      chat_status:
+        type: integer
+      messages:
+        items:
+          $ref: '#/definitions/chat.MessageDto'
+        type: array
+      review:
+        type: boolean
+      to_user_id:
+        type: integer
+      trip_id:
+        type: integer
+    type: object
+  chat.MessageDto:
+    properties:
+      created_at:
+        type: string
+      is_owner:
+        type: boolean
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+  city.CityDto:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      region:
+        type: string
+    type: object
+  city.FindCityResponseDto:
+    properties:
+      cities:
+        items:
+          $ref: '#/definitions/city.CityDto'
+        type: array
+    type: object
+  city_v2.CityDtoV2:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  common_dto.AuthorDataDto:
+    properties:
+      car:
+        $ref: '#/definitions/common_dto.CarDto'
+      user_data:
+        $ref: '#/definitions/common_dto.UserDataDto'
+    type: object
+  common_dto.CarDto:
+    properties:
+      brand:
+        type: string
+      brand_id:
+        type: integer
+      car_number:
+        type: string
+      color:
+        type: string
+      color_id:
+        type: integer
+      id:
+        type: integer
+      issue_date:
+        type: integer
+      model:
+        type: string
+      model_id:
+        type: integer
+    type: object
+  common_dto.CashData:
+    properties:
+      currency:
+        type: string
+      price:
+        type: number
+    type: object
+  common_dto.CityDto:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      region:
+        type: string
+    type: object
+  common_dto.DistanceData:
+    properties:
+      description:
+        type: string
+      status:
+        type: integer
+      value:
+        type: string
+    type: object
+  common_dto.ItemOrderDto:
+    properties:
+      offer_data:
+        $ref: '#/definitions/common_dto.OfferData'
+      order_data:
+        $ref: '#/definitions/common_dto.OrderData'
+      trip_data:
+        $ref: '#/definitions/common_dto.TripData'
+    type: object
+  common_dto.OfferData:
+    properties:
+      count:
+        description: Количество заявок на твою поездку
+        type: integer
+      status:
+        description: Статус заявки, которую ты отправил
+        type: integer
+      suitable:
+        description: Подходящие поездки
+        type: integer
+    type: object
+  common_dto.OrderData:
+    properties:
+      author:
+        $ref: '#/definitions/common_dto.AuthorDataDto'
+      departure_data:
+        $ref: '#/definitions/common_dto.PlaceData'
+      destination_data:
+        $ref: '#/definitions/common_dto.PlaceData'
+      full_seat_count:
+        type: integer
+      id:
+        type: integer
+      start_at:
+        type: string
+      status:
+        type: integer
+      user_type:
+        type: integer
+    type: object
+  common_dto.PassengerData:
+    properties:
+      order_id:
+        type: integer
+      seat_count:
+        type: integer
+      user_data:
+        $ref: '#/definitions/common_dto.UserDataDto'
+    type: object
+  common_dto.PlaceData:
+    properties:
+      city:
+        $ref: '#/definitions/common_dto.CityDto'
+      distanceData:
+        $ref: '#/definitions/common_dto.DistanceData'
+      name:
+        type: string
+      point:
+        $ref: '#/definitions/common_dto.Point'
+    type: object
+  common_dto.Point:
+    properties:
+      lat:
+        type: number
+      lon:
+        type: number
+    type: object
+  common_dto.TripData:
+    properties:
+      cash_data:
+        $ref: '#/definitions/common_dto.CashData'
+      free_seat_count:
+        type: integer
+      id:
+        type: integer
+      on_the_way:
+        description: Началась ли поездка
+        type: boolean
+    type: object
+  common_dto.UserDataDto:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      photo_url:
+        type: string
+      rating_count:
+        type: integer
+      user_rating:
+        type: string
+    type: object
+  config.FeatureToggle:
+    properties:
+      force_update:
+        type: boolean
+    type: object
+  confirm.CheckCodeDto:
+    properties:
+      code:
+        example: 1111
+        type: integer
+      phone_number:
+        example: "79123456789"
+        type: string
+      session_id:
+        example: 232b73ca-76ee-11ee-b962-0242ac120002
+        type: string
+    type: object
+  confirm.CheckCodeResponseDto:
+    properties:
+      is_registered:
+        type: boolean
+      message:
+        type: string
+      token:
+        $ref: '#/definitions/confirm.TokensDto'
+    type: object
+  confirm.RefreshTokenDto:
+    properties:
+      refresh_token:
+        type: string
+      session_id:
+        example: 232b73ca-76ee-11ee-b962-0242ac120002
+        type: string
+    type: object
+  confirm.SendCodeDto:
+    properties:
+      phone_number:
+        example: "79123456789"
+        type: string
+    type: object
+  confirm.SendCodeResponseDto:
+    properties:
+      message:
+        type: string
+    type: object
+  confirm.TokensDto:
+    properties:
+      access_token:
+        type: string
+    type: object
+  create_announce.CreateAnnounceDto:
+    properties:
+      departure_address:
+        type: string
+      departure_point:
+        $ref: '#/definitions/order.Point'
+      destination_address:
+        type: string
+      destination_point:
+        $ref: '#/definitions/order.Point'
+      from_city_id:
+        type: integer
+      seat_count:
+        maximum: 4
+        minimum: 1
+        type: integer
+      start_at:
+        type: string
+      to_city_id:
+        type: integer
+    required:
+    - from_city_id
+    - seat_count
+    - start_at
+    - to_city_id
+    type: object
+  create_announce.CreateAnnounceResponseDto:
+    properties:
+      message:
+        type: string
+      title:
+        type: string
+    type: object
+  create_order.CreateOrderDto:
+    properties:
+      car_id:
+        type: integer
+      departure_address:
+        type: string
+      departure_point:
+        $ref: '#/definitions/order.Point'
+      destination_address:
+        type: string
+      destination_point:
+        $ref: '#/definitions/order.Point'
+      from_city_id:
+        type: integer
+      price:
+        type: number
+      seat_count:
+        type: integer
+      start_at:
+        type: string
+      to_city_id:
+        type: integer
+    type: object
+  create_order.ResponseDto:
+    properties:
+      message:
+        type: string
+      title:
+        type: string
+    type: object
+  customization.GetCustomizationResponseDto:
+    properties:
+      notes:
+        items:
+          $ref: '#/definitions/customization.NoteDto'
+        type: array
+      photos:
+        items:
+          $ref: '#/definitions/customization.ImageDto'
+        type: array
+      popular_routes:
+        items:
+          $ref: '#/definitions/customization.PopularRouteDto'
+        type: array
+      url:
+        type: string
+    type: object
+  customization.ImageDto:
+    properties:
+      code:
+        type: integer
+      value:
+        type: string
+    type: object
+  customization.NoteDto:
+    properties:
+      code:
+        type: integer
+      value:
+        type: string
+    type: object
+  customization.PopularRouteDto:
+    properties:
+      from_city:
+        type: string
+      from_city_id:
+        type: integer
+      image_url:
+        type: string
+      price_text:
+        type: string
+      to_city:
+        type: string
+      to_city_id:
+        type: integer
+    type: object
+  feature_toggle.GetFeatureToggleResponseDto:
+    properties:
+      feature_toggle:
+        $ref: '#/definitions/config.FeatureToggle'
+    type: object
+  file.AddFileResponseDto:
+    properties:
+      file_id:
+        type: string
+      url:
+        type: string
+    type: object
+  get_active_chats.ActiveChatDto:
+    properties:
+      chat_id:
+        type: integer
+      chat_status:
+        type: integer
+      from_city_name:
+        type: string
+      has_unread_messages:
+        type: boolean
+      message:
+        $ref: '#/definitions/get_active_chats.MessageDto'
+      offer_status:
+        type: integer
+      start_at:
+        type: string
+      time:
+        type: string
+      to_city_name:
+        type: string
+      trip_id:
+        type: integer
+      user_data:
+        $ref: '#/definitions/get_active_chats.UserDataDto'
+    type: object
+  get_active_chats.MessageDto:
+    properties:
+      created_at:
+        type: string
+      is_owner:
+        type: boolean
+      message:
+        type: string
+    type: object
+  get_active_chats.UserDataDto:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      photo_id:
+        type: string
+    type: object
+  get_active_driver_orders.GetActiveDriverOrdersResponseDto:
+    properties:
+      orders:
+        items:
+          $ref: '#/definitions/common_dto.ItemOrderDto'
+        type: array
+    type: object
+  get_data.CityDto:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  get_data.GetPointDataResponseDto:
+    properties:
+      address:
+        type: string
+      city:
+        $ref: '#/definitions/get_data.CityDto'
+      name:
+        type: string
+      region:
+        $ref: '#/definitions/get_data.RegionDto'
+    type: object
+  get_data.RegionDto:
+    properties:
+      name:
+        type: string
+    type: object
+  get_order.GetOrderResponseDto:
+    properties:
+      is_owner:
+        type: boolean
+      offer_data:
+        $ref: '#/definitions/common_dto.OfferData'
+      order_data:
+        $ref: '#/definitions/common_dto.OrderData'
+      passengers:
+        items:
+          $ref: '#/definitions/common_dto.PassengerData'
+        type: array
+      trip_data:
+        $ref: '#/definitions/common_dto.TripData'
+    type: object
+  get_price.GetPriceResponseDto:
+    properties:
+      lower_limit:
+        type: number
+      offset:
+        type: number
+      price:
+        type: number
+      upper_limit:
+        type: number
+    type: object
+  get_recent.GetRecentResponseDto:
+    properties:
+      item:
+        items:
+          $ref: '#/definitions/common_dto.ItemOrderDto'
+        type: array
+    type: object
+  get_reviews.GetReviewsResponseDto:
+    properties:
+      count:
+        type: integer
+      review:
+        items:
+          $ref: '#/definitions/get_reviews.ReviewDto'
+        type: array
+    type: object
+  get_reviews.ReviewDto:
+    properties:
+      photo_url:
+        type: string
+      rate:
+        type: integer
+      tags:
+        items:
+          properties:
+            name:
+              type: string
+          type: object
+        type: array
+      user_name:
+        type: string
+    type: object
+  get_upcoming_driver_orders.GetUpcomingDriverOrdersResponseDto:
+    properties:
+      count:
+        type: integer
+      orders:
+        items:
+          $ref: '#/definitions/common_dto.ItemOrderDto'
+        type: array
+    type: object
+  handlers.PageableModel:
+    properties:
+      items: {}
+      page_index:
+        type: integer
+      page_size:
+        type: integer
+      total_count:
+        type: integer
+    type: object
+  notification_message.CheckNewNotificationsResponseDto:
+    properties:
+      has_new_messages:
+        type: boolean
+      has_new_notifications:
+        type: boolean
+    type: object
+  notification_message.GetNotificationMessagesResponseDto:
+    properties:
+      notification_messages:
+        items:
+          $ref: '#/definitions/notification_message.NotificationMessagesDto'
+        type: array
+    type: object
+  notification_message.NotificationMessagesDto:
+    properties:
+      created_at:
+        type: string
+      deep_link:
+        type: string
+      image_url:
+        type: string
+      is_read:
+        type: boolean
+      message:
+        type: string
+      title:
+        type: string
+    type: object
+  notification_message.RegisterToken:
+    properties:
+      device_id:
+        type: string
+      platform:
+        type: integer
+      token:
+        type: string
+    type: object
+  notification_message.RevokeToken:
+    properties:
+      device_id:
+        type: string
+    type: object
+  offer.SendOfferDto:
+    properties:
+      seat_count:
+        maximum: 8
+        minimum: 1
+        type: integer
+      trip_id:
+        minimum: 1
+        type: integer
+    required:
+    - seat_count
+    - trip_id
+    type: object
+  order.Point:
+    properties:
+      lat:
+        type: number
+      lon:
+        type: number
+    type: object
+  rating.CheckStatusResponseDto:
+    properties:
+      is_reviewed:
+        type: boolean
+    type: object
+  rating.CreateRatingDto:
+    properties:
+      rate:
+        type: integer
+      status:
+        type: integer
+      to_user_id:
+        type: integer
+      trip_id:
+        type: integer
+    type: object
+  rating.CreateRatingResponseDto:
+    properties:
+      id:
+        type: integer
+    type: object
+  rating_tag.AddTagsDto:
+    properties:
+      rating_id:
+        type: integer
+      tags:
+        items:
+          type: integer
+        type: array
+    type: object
+  send_offer.SendOfferDto:
+    properties:
+      order_id:
+        minimum: 1
+        type: integer
+      seat_count:
+        maximum: 8
+        minimum: 1
+        type: integer
+    required:
+    - order_id
+    - seat_count
+    type: object
+  statement.CreateStatementDto:
+    properties:
+      mail:
+        type: string
+      name:
+        type: string
+    required:
+    - mail
+    - name
+    type: object
+  tag.Dto:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  tariff.GetPriceResponseDto:
+    properties:
+      lower_limit:
+        type: number
+      offset:
+        type: number
+      price:
+        type: number
+      upper_limit:
+        type: number
+    type: object
+  trip.ChangeOfferDto:
+    properties:
+      status:
+        maximum: 3
+        minimum: 1
+        type: integer
+    required:
+    - status
+    type: object
+  trip.CreateTripDto:
+    properties:
+      car_id:
+        type: integer
+      date:
+        type: string
+      departure_point:
+        type: string
+      destination_point:
+        type: string
+      from_city_id:
+        type: integer
+      price:
+        type: number
+      seat_count:
+        maximum: 4
+        minimum: 1
+        type: integer
+      status:
+        type: integer
+      to_city_id:
+        type: integer
+    type: object
+  trip.CreateTripResponseDto:
+    properties:
+      id:
+        type: integer
+      message:
+        type: string
+      title:
+        type: string
+    type: object
+  trip.DriverData:
+    properties:
+      car:
+        $ref: '#/definitions/car.CarDto'
+      user_data:
+        $ref: '#/definitions/user_data.UserDataDto'
+    type: object
+  trip.GetTripResponseDto:
+    properties:
+      currency:
+        type: string
+      date:
+        type: string
+      driver:
+        $ref: '#/definitions/trip.DriverData'
+      free_seat_count:
+        type: integer
+      from_city:
+        $ref: '#/definitions/city.CityDto'
+      full_seat_count:
+        type: integer
+      id:
+        type: integer
+      passenger:
+        items:
+          $ref: '#/definitions/user_data.UserDataDto'
+        type: array
+      price:
+        type: number
+      status:
+        type: integer
+      to_city:
+        $ref: '#/definitions/city.CityDto'
+    type: object
+  trip.GetUserTripByIdDto:
+    properties:
+      currency:
+        type: string
+      date:
+        type: string
+      driver:
+        $ref: '#/definitions/trip.DriverData'
+      free_seat_count:
+        type: integer
+      from_city:
+        $ref: '#/definitions/city.CityDto'
+      full_seat_count:
+        type: integer
+      id:
+        type: integer
+      offer:
+        items:
+          $ref: '#/definitions/user_data.UserDataDto'
+        type: array
+      passenger:
+        items:
+          $ref: '#/definitions/user_data.UserDataDto'
+        type: array
+      price:
+        type: number
+      status:
+        type: integer
+      to_city:
+        $ref: '#/definitions/city.CityDto'
+      user_type:
+        type: integer
+    type: object
+  trip.OrderDto:
+    properties:
+      date:
+        type: string
+      from_city:
+        $ref: '#/definitions/city.CityDto'
+      offer_id:
+        type: integer
+      offer_status:
+        type: integer
+      opponent_is_locked:
+        type: boolean
+      order_id:
+        type: integer
+      order_status:
+        type: integer
+      seat_count:
+        type: integer
+      to_city:
+        $ref: '#/definitions/city.CityDto'
+      user_data:
+        $ref: '#/definitions/user_data.UserDataDto'
+      user_type:
+        type: integer
+    type: object
+  trip.TripDto:
+    properties:
+      currency:
+        type: string
+      date:
+        type: string
+      driver:
+        $ref: '#/definitions/trip.DriverData'
+      free_seat_count:
+        type: integer
+      from_city:
+        $ref: '#/definitions/city.CityDto'
+      full_seat_count:
+        type: integer
+      id:
+        type: integer
+      offer_count:
+        type: integer
+      price:
+        type: number
+      status:
+        type: integer
+      to_city:
+        $ref: '#/definitions/city.CityDto'
+    type: object
+  trip.UpdateTripDto:
+    properties:
+      car_id:
+        type: integer
+      date:
+        type: string
+      price:
+        type: number
+      seat_count:
+        maximum: 4
+        minimum: 1
+        type: integer
+    type: object
+  trip.UpdateTripResponseDto:
+    properties:
+      id:
+        type: integer
+      message:
+        type: string
+      title:
+        type: string
+    type: object
+  user.DeleteUserDto:
+    properties:
+      message:
+        example: Начну жизнь с чистого листа!
+        maxLength: 200
+        type: string
+    type: object
+  user_app_version.UpsertUserAppVersionDto:
+    properties:
+      app_version:
+        type: string
+      device_id:
+        type: string
+      platform:
+        maximum: 2
+        minimum: 1
+        type: integer
+    type: object
+  user_data.CreateUserDataDto:
+    properties:
+      birth_date:
+        example: "1991-01-01"
+        type: string
+      email:
+        example: dealee@dealee.ru
+        type: string
+      first_name:
+        example: Иван
+        maxLength: 50
+        type: string
+      last_name:
+        example: Иванов
+        maxLength: 50
+        type: string
+      sex:
+        example: 2
+        type: integer
+    type: object
+  user_data.GetUserDataChatDto:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      photo_id:
+        type: string
+    type: object
+  user_data.GetUserDataDto:
+    properties:
+      birth_date:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      phone_number:
+        type: string
+      photo_url:
+        type: string
+      rating_count:
+        type: integer
+      sex:
+        type: integer
+      user_rating:
+        type: number
+    type: object
+  user_data.UpdateUserDataDto:
+    properties:
+      birth_date:
+        example: "1992-02-02"
+        type: string
+      email:
+        type: string
+      first_name:
+        maxLength: 50
+        type: string
+      last_name:
+        maxLength: 50
+        type: string
+      sex:
+        type: integer
+    type: object
+  user_data.UpdateUserPhotoDto:
+    properties:
+      photo_id:
+        type: string
+    type: object
+  user_data.UserDataDto:
+    properties:
+      chat_id:
+        type: integer
+      id:
+        type: integer
+      name:
+        type: string
+      photo_url:
+        type: string
+      rating_count:
+        type: integer
+      user_rating:
+        type: number
+    type: object
+  users_feedbacks.CreateFeedbackDto:
+    properties:
+      email:
+        maxLength: 50
+        type: string
+      message:
+        maxLength: 500
+        type: string
+    required:
+    - email
+    - message
+    type: object
+  users_feedbacks.CreateFeedbackResponseDto:
+    properties:
+      message:
+        type: string
+      title:
+        type: string
+    type: object
+  v2.CancelOrderResponseDto:
+    properties:
+      message:
+        type: string
+      title:
+        type: string
+    type: object
+  v2.CreateAnnounceDto:
+    properties:
+      from_city_id:
+        type: integer
+      seat_count:
+        maximum: 4
+        minimum: 1
+        type: integer
+      start_at:
+        type: string
+      to_city_id:
+        type: integer
+    required:
+    - from_city_id
+    - seat_count
+    - start_at
+    - to_city_id
+    type: object
+  v2.CreateAnnounceResponseDto:
+    properties:
+      message:
+        type: string
+      title:
+        type: string
+    type: object
+  v2.DetailedOrderDto:
+    properties:
+      author:
+        $ref: '#/definitions/v2.DriverDataV2'
+      currency:
+        type: string
+      free_seat_count:
+        type: integer
+      from_city:
+        $ref: '#/definitions/city_v2.CityDtoV2'
+      full_seat_count:
+        type: integer
+      id:
+        type: integer
+      is_owner:
+        type: boolean
+      offer:
+        $ref: '#/definitions/v2.OfferDescription'
+      on_the_way:
+        type: boolean
+      passengers:
+        items:
+          $ref: '#/definitions/v2.UserDataDtoV2'
+        type: array
+      price:
+        type: number
+      start_at:
+        type: string
+      status:
+        type: integer
+      to_city:
+        $ref: '#/definitions/city_v2.CityDtoV2'
+      trip:
+        $ref: '#/definitions/v2.TripDescription'
+      user_type:
+        type: integer
+    type: object
+  v2.DriverDataV2:
+    properties:
+      car:
+        $ref: '#/definitions/car.CarDtoV2'
+      user_data:
+        $ref: '#/definitions/v2.UserDataDtoV2'
+    type: object
+  v2.GetActiveDriverOrdersResponseDto:
+    properties:
+      orders:
+        items:
+          $ref: '#/definitions/v2.DetailedOrderDto'
+        type: array
+    type: object
+  v2.GetOffersDto:
+    properties:
+      offer:
+        items:
+          $ref: '#/definitions/v2.OfferDto'
+        type: array
+    type: object
+  v2.GetRecentResponseDto:
+    properties:
+      orders:
+        items:
+          $ref: '#/definitions/v2.DetailedOrderDto'
+        type: array
+    type: object
+  v2.GetUpcomingDriverOrdersResponseDto:
+    properties:
+      count:
+        type: integer
+      orders:
+        items:
+          $ref: '#/definitions/v2.DetailedOrderDto'
+        type: array
+    type: object
+  v2.OfferDescription:
+    properties:
+      count:
+        type: integer
+      status:
+        type: integer
+    type: object
+  v2.OfferDto:
+    properties:
+      chat_id:
+        type: integer
+      from_user:
+        $ref: '#/definitions/v2.UserDataDtoV2'
+      id:
+        type: integer
+      status:
+        type: integer
+    type: object
+  v2.OrderDto:
+    properties:
+      author:
+        $ref: '#/definitions/v2.DriverDataV2'
+      currency:
+        type: string
+      free_seat_count:
+        type: integer
+      from_city:
+        $ref: '#/definitions/city_v2.CityDtoV2'
+      full_seat_count:
+        type: integer
+      id:
+        type: integer
+      offer:
+        $ref: '#/definitions/v2.OfferDescription'
+      on_the_way:
+        type: boolean
+      passengers:
+        items:
+          $ref: '#/definitions/v2.UserDataDtoV2'
+        type: array
+      price:
+        type: number
+      start_at:
+        type: string
+      status:
+        type: integer
+      to_city:
+        $ref: '#/definitions/city_v2.CityDtoV2'
+      trip_count:
+        type: integer
+      user_type:
+        type: integer
+    type: object
+  v2.TripDescription:
+    properties:
+      count:
+        type: integer
+      id:
+        type: integer
+    type: object
+  v2.UpdateOrderDto:
+    properties:
+      car_id:
+        type: integer
+      price:
+        type: number
+      seat_count:
+        maximum: 4
+        minimum: 1
+        type: integer
+      start_at:
+        type: string
+    required:
+    - seat_count
+    - start_at
+    type: object
+  v2.UpdateOrderResponseDto:
+    properties:
+      message:
+        type: string
+      title:
+        type: string
+    type: object
+  v2.UserDataDtoV2:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      photo_url:
+        type: string
+      rating_count:
+        type: integer
+      seat_count:
+        type: integer
+      user_rating:
+        type: number
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/app-versions:
+    get:
+      consumes:
+      - application/json
+      description: |-
+        Метод возвращает две версии приложения: soft_update_version и hard_update_version
+        Платформы: IOS = 2, Android = 1
+      parameters:
+      - description: enum платформы
+        in: query
+        name: platform
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app_version.GetAppVersionResponseDto'
+      summary: Получение версий приложения
+      tags:
+      - AppVersion
+  /api/v1/auth/check-code:
+    post:
+      consumes:
+      - application/json
+      description: Check code
+      parameters:
+      - description: Check code
+        in: body
+        name: CheckCode
+        required: true
+        schema:
+          $ref: '#/definitions/confirm.CheckCodeDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/confirm.CheckCodeResponseDto'
+      summary: Check code
+      tags:
+      - Auth
+  /api/v1/auth/refresh-token:
+    post:
+      consumes:
+      - application/json
+      description: Refresh token
+      parameters:
+      - description: Refresh token
+        in: body
+        name: RefreshToken
+        required: true
+        schema:
+          $ref: '#/definitions/confirm.RefreshTokenDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/confirm.TokensDto'
+      security:
+      - Bearer: []
+      summary: Refresh token
+      tags:
+      - Auth
+  /api/v1/auth/send-code:
+    post:
+      consumes:
+      - application/json
+      description: Send code
+      parameters:
+      - description: Send code
+        in: body
+        name: SendCode
+        required: true
+        schema:
+          $ref: '#/definitions/confirm.SendCodeDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/confirm.SendCodeResponseDto'
+      summary: Send code
+      tags:
+      - Auth
+  /api/v1/blacklist/lock-user:
+    post:
+      consumes:
+      - application/json
+      description: Lock user
+      parameters:
+      - description: Lock user
+        in: body
+        name: LockUser
+        required: true
+        schema:
+          $ref: '#/definitions/blacklist.LockUserDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/blacklist.LockUserRequestDto'
+      security:
+      - Bearer: []
+      summary: Lock user
+      tags:
+      - Blacklist
+  /api/v1/blacklist/unlock-user:
+    post:
+      consumes:
+      - application/json
+      description: Lock user
+      parameters:
+      - description: Lock user
+        in: body
+        name: LockUser
+        required: true
+        schema:
+          $ref: '#/definitions/blacklist.LockUserDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/blacklist.LockUserRequestDto'
+      security:
+      - Bearer: []
+      summary: Lock user
+      tags:
+      - Blacklist
+  /api/v1/car-brands/find:
+    get:
+      consumes:
+      - application/json
+      description: Find car brands
+      parameters:
+      - description: Name
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/car_brand.FindCarBrandResponseDto'
+      security:
+      - Bearer: []
+      summary: Find car brands
+      tags:
+      - Car
+  /api/v1/car-colors/find:
+    get:
+      consumes:
+      - application/json
+      description: Find car colors
+      parameters:
+      - description: Name
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/car_color.FindCarColorResponseDto'
+      security:
+      - Bearer: []
+      summary: Find car colors
+      tags:
+      - Car
+  /api/v1/car-models/find:
+    get:
+      consumes:
+      - application/json
+      description: Find car models
+      parameters:
+      - description: Brand id
+        in: query
+        name: car_brand_id
+        required: true
+        type: integer
+      - description: Name
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/car_model.FindCarModelResponseDto'
+      security:
+      - Bearer: []
+      summary: Find car models
+      tags:
+      - Car
+  /api/v1/cars:
+    get:
+      consumes:
+      - application/json
+      description: Find user car
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/car.CarDtoV2'
+      security:
+      - Bearer: []
+      summary: Find user car
+      tags:
+      - Car
+    post:
+      consumes:
+      - application/json
+      description: Create user car
+      parameters:
+      - description: Create car
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/car.CreateCarDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/car.CreateCarResponseDto'
+      security:
+      - Bearer: []
+      summary: Create user car
+      tags:
+      - Car
+    put:
+      consumes:
+      - application/json
+      description: Put car by ID
+      parameters:
+      - description: Change car
+        in: body
+        name: put
+        required: true
+        schema:
+          $ref: '#/definitions/car.UpdateCarDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/car.UpdateCarDto'
+      security:
+      - Bearer: []
+      summary: Put car by ID
+      tags:
+      - Car
+  /api/v1/cars/delete/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Delete cars by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: Delete cars by ID
+      tags:
+      - Car
+  /api/v1/chats:
+    post:
+      consumes:
+      - application/json
+      description: Create chat
+      parameters:
+      - description: Create chat
+        in: body
+        name: CreateChat
+        required: true
+        schema:
+          $ref: '#/definitions/chat.CreateChatDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/chat.CreateChatResponseDto'
+      security:
+      - Bearer: []
+      summary: Create chat
+      tags:
+      - Chat
+  /api/v1/chats/{id}/get-trip-id:
+    get:
+      consumes:
+      - application/json
+      description: Метод для получения to_user_id и trip_id для работы запроса /api/v1/get-user-offer
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/chat.GetChatTripResponseDto'
+      security:
+      - Bearer: []
+      summary: Добавить метод получения данных для deep-link
+      tags:
+      - Chat
+  /api/v1/chats/{id}/messages:
+    get:
+      consumes:
+      - application/json
+      description: Get messages
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/chat.GetMessagesResponseDto'
+      security:
+      - Bearer: []
+      summary: Get messages
+      tags:
+      - Chat
+    post:
+      consumes:
+      - application/json
+      description: Create message
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Create message
+        in: body
+        name: CreateMessage
+        required: true
+        schema:
+          $ref: '#/definitions/chat.CreateMessageDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: Create message
+      tags:
+      - Chat
+  /api/v1/chats/active:
+    get:
+      consumes:
+      - application/json
+      description: Метод возвращает список активных чатов
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/get_active_chats.ActiveChatDto'
+            type: array
+      security:
+      - Bearer: []
+      summary: Метод возвращает список активных чатов
+      tags:
+      - Chat
+  /api/v1/chats/archived:
+    get:
+      consumes:
+      - application/json
+      description: Get archived chats
+      parameters:
+      - in: query
+        minimum: 0
+        name: page_index
+        type: integer
+      - in: query
+        minimum: 1
+        name: page_size
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/chat.GetChatsResponseDto'
+            type: array
+      security:
+      - Bearer: []
+      summary: Get archived chats
+      tags:
+      - Chat
+  /api/v1/chats/check-new:
+    get:
+      consumes:
+      - application/json
+      description: Check new messages
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/chat.CheckNewMessagesResponseDto'
+      security:
+      - Bearer: []
+      summary: Check new messages
+      tags:
+      - Chat
+  /api/v1/cities/find:
+    get:
+      consumes:
+      - application/json
+      description: Find cities
+      parameters:
+      - description: Name
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/city.FindCityResponseDto'
+      summary: Find cities
+      tags:
+      - City
+  /api/v1/customize:
+    get:
+      consumes:
+      - application/json
+      description: Get customization
+      parameters:
+      - in: query
+        name: timezone
+        type: string
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/customization.GetCustomizationResponseDto'
+      summary: Get customization
+      tags:
+      - Customization
+  /api/v1/feature-toggles:
+    get:
+      consumes:
+      - application/json
+      description: Метод переключает фичи (включает или выключает)
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/feature_toggle.GetFeatureToggleResponseDto'
+      summary: Получение feature toggle
+      tags:
+      - FeatureToggle
+  /api/v1/feedback:
+    post:
+      consumes:
+      - application/json
+      description: create feedback
+      parameters:
+      - description: create feedback
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/users_feedbacks.CreateFeedbackDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/users_feedbacks.CreateFeedbackResponseDto'
+      summary: create feedback
+      tags:
+      - Feedback
+  /api/v1/file:
+    get:
+      consumes:
+      - application/json
+      description: Get file
+      parameters:
+      - description: file_id
+        in: query
+        name: File_id
+        type: string
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Get file
+      tags:
+      - File
+    post:
+      consumes:
+      - multipart/form-data
+      description: Add file
+      parameters:
+      - description: Add file
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - multipart/form-data
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/file.AddFileResponseDto'
+      security:
+      - Bearer: []
+      summary: Add file
+      tags:
+      - File
+  /api/v1/geo/point-data:
+    get:
+      consumes:
+      - application/json
+      description: Получить данные по координату
+      parameters:
+      - in: query
+        name: lat
+        type: number
+      - in: query
+        name: lon
+        type: number
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/get_data.GetPointDataResponseDto'
+      summary: geo
+      tags:
+      - Geo
+  /api/v1/get-by-trip-id:
+    get:
+      consumes:
+      - application/json
+      description: Get chat
+      parameters:
+      - description: Get chat
+        in: body
+        name: GetChat
+        required: true
+        schema:
+          $ref: '#/definitions/chat.GetChatDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/chat.GetChatResponseDto'
+      security:
+      - Bearer: []
+      summary: Get chat
+      tags:
+      - Chat
+  /api/v1/notifications:
+    get:
+      consumes:
+      - application/json
+      description: Метод получения списка уведомлений
+      parameters:
+      - in: query
+        minimum: 0
+        name: page_index
+        type: integer
+      - in: query
+        minimum: 1
+        name: page_size
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/notification_message.GetNotificationMessagesResponseDto'
+      security:
+      - Bearer: []
+      summary: Список уведомлений
+      tags:
+      - Notifications
+  /api/v1/notifications/check-new:
+    get:
+      consumes:
+      - application/json
+      description: Метод проверки новых уведомлений и сообщений
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/notification_message.CheckNewNotificationsResponseDto'
+      security:
+      - Bearer: []
+      summary: Проверка новых уведомлений и сообщений
+      tags:
+      - Notifications
+  /api/v1/notifications/register-token:
+    post:
+      consumes:
+      - application/json
+      description: Метод регистрирует push токен полученный с FCM в БД
+      parameters:
+      - description: Register token
+        in: body
+        name: RegisterToken
+        required: true
+        schema:
+          $ref: '#/definitions/notification_message.RegisterToken'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: Регистрация push токена
+      tags:
+      - Notifications
+  /api/v1/notifications/revoke-token:
+    post:
+      consumes:
+      - application/json
+      description: Метод удаления push токена при выходе из аккаунта.
+      parameters:
+      - description: Revoke token
+        in: body
+        name: RevokeToken
+        required: true
+        schema:
+          $ref: '#/definitions/notification_message.RevokeToken'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: Удаление push токена
+      tags:
+      - Notifications
+  /api/v1/offers/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Change offer
+      parameters:
+      - description: Change offer
+        in: body
+        name: change
+        required: true
+        schema:
+          $ref: '#/definitions/trip.ChangeOfferDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: data
+          schema:
+            type: integer
+      security:
+      - Bearer: []
+      summary: Change offer
+      tags:
+      - Offer
+  /api/v1/offers/get-user-offer:
+    get:
+      consumes:
+      - application/json
+      description: Get offer
+      parameters:
+      - in: query
+        name: chat_id
+        type: integer
+      - in: query
+        name: to_user_id
+        type: integer
+      - in: query
+        name: trip_id
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/trip.OrderDto'
+      security:
+      - Bearer: []
+      summary: Get offer
+      tags:
+      - Offer
+  /api/v1/offers/passenger/send-offer:
+    post:
+      consumes:
+      - application/json
+      description: Create offer
+      parameters:
+      - description: Create offer
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/offer.SendOfferDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: Create offer
+      tags:
+      - Offer
+  /api/v1/orders/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Метод возвращающий подробную информацию о поездке.
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v2.DetailedOrderDto'
+      summary: Подробный вывод поездки
+      tags:
+      - Order
+  /api/v1/orders/{id}/cancel:
+    put:
+      consumes:
+      - application/json
+      description: Метод отменяет поездку
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/cancel_order.CancelOrderResponseDto'
+      security:
+      - Bearer: []
+      summary: Отмена поездки
+      tags:
+      - Order
+  /api/v1/orders/{id}/get-offers:
+    get:
+      consumes:
+      - application/json
+      description: Метод возвращает список всех заявок. Работает только для водителя
+        поездки
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v2.GetOffersDto'
+      security:
+      - Bearer: []
+      summary: Получения всех заявок
+      tags:
+      - Order
+  /api/v1/orders/{id}/update:
+    put:
+      consumes:
+      - application/json
+      description: Пользователи могут поменять количество мест и дату, а водители
+        могут менять еще цену поездки
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Параметры для создания объявления
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/v2.UpdateOrderDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v2.UpdateOrderResponseDto'
+      security:
+      - Bearer: []
+      summary: Редактирование модели order
+      tags:
+      - Order
+  /api/v1/orders/active-driver-orders:
+    get:
+      consumes:
+      - application/json
+      description: Метод возвращает список всех активных поездок водителя на определенную
+        дату
+      parameters:
+      - description: date
+        in: query
+        name: date
+        required: true
+        type: string
+      - description: from_city_id
+        in: query
+        name: from_city_id
+        required: true
+        type: integer
+      - description: to_city_id
+        in: query
+        name: to_city_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v2.GetActiveDriverOrdersResponseDto'
+      security:
+      - Bearer: []
+      summary: Активные поездки
+      tags:
+      - Order
+  /api/v1/orders/client-upcoming-driver-orders:
+    get:
+      consumes:
+      - application/json
+      description: Метод возвращает список всех предстоящих поездок
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v2.GetUpcomingDriverOrdersResponseDto'
+      security:
+      - Bearer: []
+      summary: Профиль пользователя
+      tags:
+      - Order
+  /api/v1/orders/create-announce:
+    post:
+      consumes:
+      - application/json
+      description: Метод создает объявления
+      parameters:
+      - description: Параметры для создания объявления
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/v2.CreateAnnounceDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v2.CreateAnnounceResponseDto'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/v2.CreateAnnounceResponseDto'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/v2.CreateAnnounceResponseDto'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/v2.CreateAnnounceResponseDto'
+      security:
+      - Bearer: []
+      summary: Создание объявления
+      tags:
+      - Order
+  /api/v1/orders/find:
+    get:
+      consumes:
+      - application/json
+      description: Метод возвращает список всех поездок подходящих по выбранным параметрам
+      parameters:
+      - in: query
+        minimum: 1
+        name: from_city_id
+        required: true
+        type: integer
+      - in: query
+        minimum: 0
+        name: page_index
+        type: integer
+      - in: query
+        minimum: 1
+        name: page_size
+        required: true
+        type: integer
+      - in: query
+        name: seat_count
+        type: integer
+      - in: query
+        name: sorting
+        type: string
+      - in: query
+        minLength: 1
+        name: start_at
+        required: true
+        type: string
+      - in: query
+        name: time_filter
+        type: integer
+      - in: query
+        minimum: 1
+        name: to_city_id
+        required: true
+        type: integer
+      - in: query
+        minimum: 1
+        name: user_type
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handlers.PageableModel'
+            - properties:
+                items:
+                  items:
+                    $ref: '#/definitions/v2.OrderDto'
+                  type: array
+              type: object
+      summary: Поиск поездок
+      tags:
+      - Order
+  /api/v1/orders/history:
+    get:
+      consumes:
+      - application/json
+      description: Метод возвращает список поездок, в котором пользователь был участником.
+      parameters:
+      - description: Page size
+        in: query
+        name: page_size
+        required: true
+        type: integer
+      - description: Page index
+        in: query
+        name: page_index
+        required: true
+        type: integer
+      - description: Статус поездки
+        in: query
+        name: status
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handlers.PageableModel'
+            - properties:
+                items:
+                  items:
+                    $ref: '#/definitions/v2.OrderDto'
+                  type: array
+              type: object
+      security:
+      - Bearer: []
+      summary: Получение поездок
+      tags:
+      - Order
+  /api/v1/orders/recent:
+    get:
+      consumes:
+      - application/json
+      description: Метод возвращает последние созданные поездки (user_type = 0) или
+        заявки (user_type = 1)
+      parameters:
+      - description: user_type
+        in: query
+        name: user_type
+        required: true
+        type: integer
+      - description: count
+        in: query
+        name: count
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v2.GetRecentResponseDto'
+      security:
+      - Bearer: []
+      summary: Получения последних поездок
+      tags:
+      - Order
+  /api/v1/orders/upcoming-driver-orders:
+    get:
+      consumes:
+      - application/json
+      description: Метод возвращает список всех предстоящих поездок другого пользователя
+      parameters:
+      - description: user_id
+        in: query
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v2.GetUpcomingDriverOrdersResponseDto'
+      summary: Профиль пользователя
+      tags:
+      - Order
+  /api/v1/rating-tags:
+    post:
+      consumes:
+      - application/json
+      description: Create tags for user
+      parameters:
+      - description: Create tags
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/rating_tag.AddTagsDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: Create tags for user
+      tags:
+      - Rating
+  /api/v1/ratings:
+    post:
+      consumes:
+      - application/json
+      description: Create rating for user
+      parameters:
+      - description: Create rating
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/rating.CreateRatingDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/rating.CreateRatingResponseDto'
+      security:
+      - Bearer: []
+      summary: Create rating for user
+      tags:
+      - Rating
+  /api/v1/ratings/check-status:
+    get:
+      consumes:
+      - application/json
+      description: Check status
+      parameters:
+      - in: query
+        name: to_user_id
+        type: integer
+      - in: query
+        name: trip_id
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/rating.CheckStatusResponseDto'
+      security:
+      - Bearer: []
+      summary: Check status
+      tags:
+      - Rating
+  /api/v1/statement:
+    post:
+      consumes:
+      - application/json
+      description: create statements
+      parameters:
+      - description: Create statements
+        in: body
+        name: put
+        required: true
+        schema:
+          $ref: '#/definitions/statement.CreateStatementDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: data
+          schema:
+            type: integer
+      summary: create statements
+      tags:
+      - Statements
+  /api/v1/tags:
+    get:
+      consumes:
+      - application/json
+      description: Get tags by rate
+      parameters:
+      - description: Rate
+        in: query
+        name: rate
+        required: true
+        type: integer
+      - description: UserType
+        in: query
+        name: user_type
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tag.Dto'
+      security:
+      - Bearer: []
+      summary: Get tags by rate
+      tags:
+      - Rating
+  /api/v1/tariffs/get-price:
+    get:
+      consumes:
+      - application/json
+      description: Find tariffs from city to city
+      parameters:
+      - description: From city id
+        in: query
+        name: from_city_id
+        required: true
+        type: integer
+      - description: To city id
+        in: query
+        name: to_city_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tariff.GetPriceResponseDto'
+      summary: Find tariffs from city to city
+      tags:
+      - Tariffs
+  /api/v1/trips:
+    post:
+      consumes:
+      - application/json
+      description: Create trip
+      parameters:
+      - description: Create trip
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/trip.CreateTripDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/trip.CreateTripResponseDto'
+      security:
+      - Bearer: []
+      summary: Create trip
+      tags:
+      - Trip
+  /api/v1/trips/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Find trips by a filter.
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/trip.GetTripResponseDto'
+      summary: Find trip by filters
+      tags:
+      - Trip
+    put:
+      consumes:
+      - application/json
+      description: Put trips by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Change trip
+        in: body
+        name: put
+        required: true
+        schema:
+          $ref: '#/definitions/trip.UpdateTripDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/trip.UpdateTripResponseDto'
+      security:
+      - Bearer: []
+      summary: Put trips by ID
+      tags:
+      - Trip
+  /api/v1/trips/{id}/cancel:
+    put:
+      consumes:
+      - application/json
+      description: Cancel trip by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: Cancel trip by ID
+      tags:
+      - Trip
+  /api/v1/trips/{id}/offer/cancel:
+    put:
+      consumes:
+      - application/json
+      description: Cancel offer by ID
+      parameters:
+      - description: trip id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: Cancel offer by ID
+      tags:
+      - Trip
+  /api/v1/trips/get-user-trip/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get trips by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/trip.GetUserTripByIdDto'
+      security:
+      - Bearer: []
+      summary: Get trips by ID
+      tags:
+      - Trip
+  /api/v1/trips/get-user-trips:
+    get:
+      consumes:
+      - application/json
+      description: Get trips for the user
+      parameters:
+      - description: Page size
+        in: query
+        name: page_size
+        required: true
+        type: integer
+      - description: Page index
+        in: query
+        name: page_index
+        required: true
+        type: integer
+      - description: User type
+        in: query
+        name: user_type
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handlers.PageableModel'
+            - properties:
+                items:
+                  items:
+                    $ref: '#/definitions/trip.TripDto'
+                  type: array
+              type: object
+      security:
+      - Bearer: []
+      summary: Get trips for the user
+      tags:
+      - Trip
+  /api/v1/user-app-versions/:
+    post:
+      consumes:
+      - application/json
+      description: Метод актуализирует версию приложения пользователя
+      parameters:
+      - description: Входная модель
+        in: body
+        name: Модель
+        required: true
+        schema:
+          $ref: '#/definitions/user_app_version.UpsertUserAppVersionDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: Версия приложения пользователя
+      tags:
+      - UserAppVersion
+  /api/v1/user-data:
+    get:
+      consumes:
+      - application/json
+      description: Get user data
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user_data.GetUserDataDto'
+      security:
+      - Bearer: []
+      summary: Get user data
+      tags:
+      - User
+    post:
+      consumes:
+      - application/json
+      description: Create user data
+      parameters:
+      - description: create user data
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/user_data.CreateUserDataDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: Create user data
+      tags:
+      - User
+    put:
+      consumes:
+      - application/json
+      description: Update user data
+      parameters:
+      - description: update user data
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/user_data.UpdateUserDataDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: Update user data
+      tags:
+      - User
+  /api/v1/user-data/photo:
+    put:
+      consumes:
+      - application/json
+      description: Update user photo
+      parameters:
+      - description: update user photo
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/user_data.UpdateUserPhotoDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: Update user photo
+      tags:
+      - User
+  /api/v1/user-ratings/get-reviews:
+    get:
+      consumes:
+      - application/json
+      description: Get user reviews info
+      parameters:
+      - in: query
+        name: user_id
+        type: integer
+      - in: query
+        minimum: 0
+        name: page_index
+        type: integer
+      - in: query
+        minimum: 1
+        name: page_size
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/get_reviews.GetReviewsResponseDto'
+      summary: Get user reviews info
+      tags:
+      - UserRating
+  /api/v1/user-ratings/get-user-reviews:
+    get:
+      consumes:
+      - application/json
+      description: Get user reviews info
+      parameters:
+      - in: query
+        minimum: 0
+        name: page_index
+        type: integer
+      - in: query
+        minimum: 1
+        name: page_size
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/get_reviews.GetReviewsResponseDto'
+      security:
+      - Bearer: []
+      summary: Get user reviews info
+      tags:
+      - UserRating
+  /api/v1/user/delete:
+    put:
+      consumes:
+      - application/json
+      description: Delete user account
+      parameters:
+      - description: Delete user account
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/user.DeleteUserDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: Delete user account
+      tags:
+      - User
+  /api/v2/cities/find:
+    get:
+      consumes:
+      - application/json
+      description: Find cities
+      parameters:
+      - description: Name
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/city.FindCityResponseDto'
+      summary: Find cities
+      tags:
+      - City
+  /api/v2/offers/passenger/send-offer:
+    post:
+      consumes:
+      - application/json
+      description: Метод выполняет отправку запроса от пассажира водителю
+      parameters:
+      - description: Входная модель
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/send_offer.SendOfferDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Bearer: []
+      summary: Метод отправки запроса на поездку
+      tags:
+      - Offer
+  /api/v2/orders/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Метод получения подробной информации о поездке, расчитывает дальность
+        если есть координаты пассажира
+      parameters:
+      - description: Широта точки посадки пасссажира
+        in: query
+        name: departure_point_lat
+        type: number
+      - description: Долгота точки посадки пасссажира
+        in: query
+        name: departure_point_lon
+        type: number
+      - description: Широта точки высадки пасссажира
+        in: query
+        name: destination_point_lat
+        type: number
+      - description: Долгота точки высадки пасссажира
+        in: query
+        name: destination_point_lon
+        type: number
+      - description: ID поездки
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/get_order.GetOrderResponseDto'
+      summary: Метод получения подробной информации о поездке
+      tags:
+      - Order V2
+  /api/v2/orders/active-driver-orders:
+    get:
+      consumes:
+      - application/json
+      description: Метод возвращает список всех активных поездок водителя на определенную
+        дату
+      parameters:
+      - description: date
+        in: query
+        name: date
+        required: true
+        type: string
+      - description: from_city_id
+        in: query
+        name: from_city_id
+        required: true
+        type: integer
+      - description: to_city_id
+        in: query
+        name: to_city_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/get_active_driver_orders.GetActiveDriverOrdersResponseDto'
+      security:
+      - Bearer: []
+      summary: Активные поездки
+      tags:
+      - Order
+  /api/v2/orders/client-upcoming-driver-orders:
+    get:
+      consumes:
+      - application/json
+      description: Метод возвращает список всех предстоящих поездок самого пользователя
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/get_upcoming_driver_orders.GetUpcomingDriverOrdersResponseDto'
+      summary: Метод предстоящих поездок
+      tags:
+      - Order
+  /api/v2/orders/create:
+    post:
+      consumes:
+      - application/json
+      description: Метод cоздание поездки v2
+      parameters:
+      - description: Параметры для создания поездки с геопозицией
+        in: body
+        name: q
+        required: true
+        schema:
+          $ref: '#/definitions/create_order.CreateOrderDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/create_order.ResponseDto'
+      security:
+      - Bearer: []
+      summary: Создание поездки v2
+      tags:
+      - Order V2
+  /api/v2/orders/create-announce:
+    post:
+      consumes:
+      - application/json
+      description: Метод создает объявления
+      parameters:
+      - description: Параметры для создания объявления
+        in: body
+        name: create
+        required: true
+        schema:
+          $ref: '#/definitions/create_announce.CreateAnnounceDto'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/create_announce.CreateAnnounceResponseDto'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/create_announce.CreateAnnounceResponseDto'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/create_announce.CreateAnnounceResponseDto'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/create_announce.CreateAnnounceResponseDto'
+      security:
+      - Bearer: []
+      summary: Создание объявления
+      tags:
+      - Order
+  /api/v2/orders/find:
+    get:
+      consumes:
+      - application/json
+      description: Метод поиска поездок v2
+      parameters:
+      - in: query
+        name: departure_point_lat
+        type: number
+      - in: query
+        name: departure_point_lon
+        type: number
+      - in: query
+        name: destination_point_lat
+        type: number
+      - in: query
+        name: destination_point_lon
+        type: number
+      - in: query
+        minimum: 1
+        name: from_city_id
+        required: true
+        type: integer
+      - in: query
+        minimum: 0
+        name: page_index
+        type: integer
+      - in: query
+        minimum: 1
+        name: page_size
+        required: true
+        type: integer
+      - in: query
+        name: seat_count
+        type: integer
+      - in: query
+        name: sorting
+        type: string
+      - in: query
+        name: start_at
+        required: true
+        type: string
+      - in: query
+        name: time
+        type: integer
+      - in: query
+        minimum: 1
+        name: to_city_id
+        required: true
+        type: integer
+      - in: query
+        minimum: 1
+        name: user_type
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handlers.PageableModel'
+            - properties:
+                items:
+                  items:
+                    $ref: '#/definitions/common_dto.ItemOrderDto'
+                  type: array
+              type: object
+      summary: Поиск поездок v2
+      tags:
+      - Order V2
+  /api/v2/orders/get-recent:
+    get:
+      consumes:
+      - application/json
+      description: Для того, чтобы скопировать данные с поездки
+      parameters:
+      - in: query
+        name: count
+        type: integer
+      - in: query
+        minimum: 0
+        name: user_type
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/get_recent.GetRecentResponseDto'
+      security:
+      - Bearer: []
+      summary: Для того, чтобы скопировать данные с поездки
+      tags:
+      - Order
+  /api/v2/orders/history:
+    get:
+      consumes:
+      - application/json
+      description: Метод возвращает список поездок, в котором пользователь был участником.
+      parameters:
+      - description: Размер страницы
+        in: query
+        name: page_size
+        required: true
+        type: integer
+      - description: Индекс страницы
+        in: query
+        name: page_index
+        required: true
+        type: integer
+      - description: Статус поездки
+        in: query
+        name: status
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handlers.PageableModel'
+            - properties:
+                items:
+                  items:
+                    $ref: '#/definitions/common_dto.ItemOrderDto'
+                  type: array
+              type: object
+      security:
+      - Bearer: []
+      summary: Получение истории поездок
+      tags:
+      - Order
+  /api/v2/orders/upcoming-driver-orders:
+    get:
+      consumes:
+      - application/json
+      description: Метод возвращает список всех предстоящих поездок другого пользователя
+      parameters:
+      - description: user_id
+        in: query
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/get_upcoming_driver_orders.GetUpcomingDriverOrdersResponseDto'
+      summary: Метод предстоящих поездок
+      tags:
+      - Order
+  /api/v2/tariffs/get-price:
+    get:
+      consumes:
+      - application/json
+      description: Для расчета цены используется тариф по региону города (from_city_id)
+        откуда выезжают
+      parameters:
+      - description: Id города откуда выезжают
+        in: query
+        name: from_city_id
+        required: true
+        type: integer
+      - description: Широта точки посадки
+        in: query
+        name: departure_point_lat
+        required: true
+        type: number
+      - description: Долгота точки посадки
+        in: query
+        name: departure_point_lon
+        required: true
+        type: number
+      - description: Широта точки высадки
+        in: query
+        name: destination_point_lat
+        required: true
+        type: number
+      - description: Долгота точки высадки
+        in: query
+        name: destination_point_lon
+        required: true
+        type: number
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/get_price.GetPriceResponseDto'
+      summary: Метод расчета цены за поездку
+      tags:
+      - Tariffs
+securityDefinitions:
+  Bearer:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gis
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gis
+  template:
+    metadata:
+      labels:
+        app: gis
+    spec:
+      containers:
+        - name: gis
+          image: vladikusman/gis:0.0.2
+          ports:
+            - containerPort: 8080
