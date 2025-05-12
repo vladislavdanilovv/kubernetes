@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx
+  name: gis
   namespace: argocd  # тот же самый, где установлен ArgoCD
 spec:
   project: default  # проект по-умолчанию
   destination:
     server: "https://kubernetes.default.svc"  # Kubernetes API адрес. Т.к ArgoCD запущен в тот же кластере, то путь до ClusterIP
-    namespace: nginx-demo  # пространство имен, где будут созданы ресурсы
+    namespace: gis-demo  # пространство имен, где будут созданы ресурсы
   sources:
-    - repoURL: https://github.com/AzamatKomaev/argo-demo-habr.git  # ссылка на Git-репозиторий
+    - repoURL: https://github.com/vladislavdanilovv/kubernetes.git # ссылка на Git-репозиторий
       targetRevision: HEAD  # указание на ветку, с котрой стоит синхронизировать состояние репозитория
       path: gis/k8/manifests  # абсолютный путь до директории с манифестами
 
